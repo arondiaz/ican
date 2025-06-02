@@ -14,7 +14,7 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        sans: "var(--font-archivo)",
+        archivo: "var(--font-archivo)",
       },
       container: {
         center: true,
