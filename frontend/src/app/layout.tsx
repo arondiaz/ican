@@ -1,18 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
-import localFont from "next/font/local";
 import "./globals.css";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 const archivo = Archivo({
   display: "swap",
@@ -35,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         //bg color
-        className={`${archivo.variable}  ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${archivo.variable} antialiased bg-teal-50`}
       >
         {children}
       </body>
