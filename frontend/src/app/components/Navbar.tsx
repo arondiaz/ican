@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="container max-w-full flex justify-between items-center h-20">
         <Link href={"/"}>
           <div className="flex flex-row items-center gap-6">
-            <Image src={S} alt="serviciosya! logo" width={55} height={55} className="rounded-xl"/>
+            <Image src={S} alt="serviciosya! logo" width={55} height={55} className="rounded-xl" priority/>
             <h2 className="hidden md:flex text-xl font-bold">ServiciosYa!</h2>
           </div>
         </Link>
