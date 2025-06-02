@@ -18,7 +18,6 @@ const navItems = [
     href: "/about",
     label: "Sobre ServiciosYa",
   },
-
 ];
 
 const Footer = () => {
@@ -35,10 +34,9 @@ const Footer = () => {
     }
   };
   return (
-    <footer className="bg-blue-900 text-white mt-10" >
+    <footer className="bg-blue-900 text-white ">
       <div className="container">
         <div className="pt-16">
-
           <div className="grid md:grid-cols-3 md:items-center">
             <div className="md:col-span-2">
               <h2 className="text-4xl mt-4 font-extralight md:text-7xl lg:text-8xl">

@@ -5,8 +5,7 @@ import S from "../assets/s.png";
 
 const navItems = [
   { href: "/servicios", name: "Servicios" },
-  { href: "/about", name: "Sobre nosotros" },
-  { href: "/contact", name: "Contacto" },
+  { href: "/about", name: "Sobre ServiciosYa!" },
 ];
 
 const Navbar = () => {
