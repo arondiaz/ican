@@ -79,3 +79,21 @@ export const deleteWorker = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+export const getWorker = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const worker = await Worker.findByPk(id, {
+      include: {
+        model: Category,
+        through: { attributes: [] },
+      },
+    });
+    if (worker == null) {
+      return res.status(404).send("worker doesn't exist");
+    }
+    res.json(worker);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
