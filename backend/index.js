@@ -7,7 +7,7 @@ const port = 4444;
 
 async function main() {
   try {
-    await sequelize.sync({force: true});
+    await sequelize.sync({force: false});
     app.listen(port);
 
     console.log("Server working on port", port);
