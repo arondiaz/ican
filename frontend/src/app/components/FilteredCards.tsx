@@ -1,6 +1,7 @@
 import React from "react";
 //import Image from "next/image";
 import { IWorker } from "../utils/interface";
+import Link from "next/link";
 
 interface Props {
   worker: IWorker;
@@ -8,6 +9,7 @@ interface Props {
 
 const FilteredCards = ({ worker }: Props) => {
   return (
+    <Link href={`worker/${worker.id}`}>
     <div
       key={worker.id}
       className="bg-white rounded-lg shadow-sm border hover:shadow-md transition-all cursor-pointer"
@@ -49,6 +51,7 @@ const FilteredCards = ({ worker }: Props) => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 
