@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Header from "../components/Header";
 import FilteredCards from "../components/FilteredCards";
@@ -8,6 +8,23 @@ import { IWorker } from "../utils/interface";
 const Services = () => {
   const [selectedCategory, setSelectedCategory] = useState("Todas");
   const [selectedCity, setSelectedCity] = useState("Todas las ciudades");
+  const [workers, setWorkers] = useState<IWorker[]>([]);;
+
+  useEffect(() => {
+    const getAllWorkers = async () => {
+      try {
+        const url = "http://localhost:4444/workers";
+
+        const allWorkers = await fetch(url);
+        const data = await allWorkers.json();
+
+        setWorkers(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getAllWorkers();
+  }, []);
 
   const categories = [
     "Todas",
@@ -18,66 +35,20 @@ const Services = () => {
     "Cerrajero",
     "Mecanico",
     "Gomero",
+    "Carpintero"
   ];
 
   const cities = ["Todas las ciudades", "Rosario", "Casilda", "Santa Fe"];
 
-  const workers:IWorker[] = [
-    {
-      _id: 1,
-      name: "Mario",
-      categories:  [{ name: "Plomero" }, { name: "Gomero" }],
-      phone: "4500",
-      city: "Rosario",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "trabajo rapido",
-    },
-    {
-      _id: 2,
-      name: "Perico",
-      categories: [{ name: "Plomero" }],
-      phone: "10000",
-      city: "Rosario",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "trabajo rapido",
-    },
-    {
-      _id: 3,
-      name: "Romeo",
-      categories:  [{ name: "Gomero" }],
-      phone: "1450",
-      city: "Santa Fe",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "trabajo rapido",
-    },
-    {
-      _id: 4,
-      name: "Rodrigo",
-      categories: [{ name: "Gomero" }],
-      phone: "€320",
-      city: "Casilda",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "trabajo rapido",
-    },
-    {
-      _id: 5,
-      name: "Pepe",
-      categories: [{ name: "Electricista" }],
-      phone: "2424",
-      city: "Santa Fe",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "trabajo rapido",
-    },
-  ];
+  const filteredServices = workers.filter((worker) => {
+    const categoryMatch = selectedCategory === "Todas" ||  worker.categories?.some((category) => category.name === selectedCategory);
 
-  const filteredServices = workers.filter((product) => {
-    const categoryMatch = selectedCategory === "Todas" || product.categories?.some((category) => category.name === selectedCategory);
-
-    const cityMatch = selectedCity === "Todas las ciudades" || product.city === selectedCity;
+    const cityMatch = selectedCity === "Todas las ciudades" ||  worker.city === selectedCity;
 
     return categoryMatch && cityMatch;
   });
 
+  console.log(filteredServices);
   return (
     <section className="w-full py-12 bg-gray-50">
       <div className="container px-4 md:px-6">
@@ -142,14 +113,14 @@ const Services = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">
             {filteredServices.map((worker) => (
-              <FilteredCards key={worker._id} worker={worker} />
+              <FilteredCards key={worker.id} worker={worker} />
             ))}
           </div>
 
           {filteredServices.length === 0 && (
             <div className="text-center py-12">
               <p className="text-muted-foreground text-lg">
-                No se encontraron productos con los filtros seleccionados.
+                No se encontraron servicios con los filtros seleccionados.
               </p>
               <button
                 onClick={() => {

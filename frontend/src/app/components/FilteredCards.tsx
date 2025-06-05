@@ -9,7 +9,7 @@ interface Props {
 const FilteredCards = ({ worker }: Props) => {
   return (
     <div
-      key={worker._id}
+      key={worker.id}
       className="bg-white rounded-lg shadow-sm border hover:shadow-md transition-all cursor-pointer"
     >
       <div className="aspect-square overflow-hidden rounded-2xl">
@@ -43,13 +43,10 @@ const FilteredCards = ({ worker }: Props) => {
         </div>
 
         <div className="flex flex-row gap-2 md:gap-4">
-
-       {worker.categories?.map((cat) => (
-            <p className="text-sm md:text-md"> {cat.name}</p>
+          {worker.categories?.map((cat) => (
+            <p key={cat.id} className="text-sm md:text-md"> {cat.name}</p>
           ))}
         </div>
-   
-     
       </div>
     </div>
   );
