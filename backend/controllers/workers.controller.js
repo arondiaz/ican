@@ -19,6 +19,12 @@ export const createWorker = async (req, res) => {
   try {
     const { name, description, phone, city, categoryIds } = req.body;
 
+    if (!Array.isArray(categoryIds) || categoryIds.length === 0) {
+      return res
+        .status(400)
+        .json({ message: "should select one category or more." });
+    }
+
     const newWorker = await Worker.create({
       name,
       description,
@@ -26,13 +32,13 @@ export const createWorker = async (req, res) => {
       city,
     });
 
-    if (categoryIds && categoryIds.length > 0) {
-      await newWorker.setCategories(categoryIds); // setCategories acepta array de IDs
-    }
-    const workerWithCategories = await Worker.findByPk(Worker.id, {
+    await newWorker.setCategories(categoryIds);
+
+    const workerWithCategories = await Worker.findByPk(newWorker.id, {
       include: Category,
     });
-    res.status(200).json(workerWithCategories);
+
+    return res.status(200).json(workerWithCategories);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

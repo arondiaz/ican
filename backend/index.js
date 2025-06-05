@@ -14,6 +14,11 @@ async function main() {
         { name: "Electricista" },
         { name: "Plomero" },
         { name: "Carpintero" },
+        { name: "Gasista" },
+        { name: "Mecanico" },
+        { name: "Gomero" },
+        { name: "Instalador de aire" },
+        { name: "Cerrajero" },
       ]);
       console.log("Categorías iniciales creadas");
     }
