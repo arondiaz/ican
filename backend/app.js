@@ -1,5 +1,6 @@
 import express from "express";
 import workerRoutes from "./routes/workers.routes.js";
+import categoryRoutes from "./routes/categories.route.js";
 import cors from "cors";
 
 const corsOptions = {
@@ -16,5 +17,6 @@ app.use(express.json());
 app.use(cors(corsOptions));
 
 app.use(workerRoutes);
+app.use(categoryRoutes);
 
 export default app;
