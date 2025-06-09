@@ -1,6 +1,7 @@
 import express from "express";
 import workerRoutes from "./routes/workers.routes.js";
 import categoryRoutes from "./routes/categories.route.js";
+import authRoutes from "./routes/auth.route.js"
 import cors from "cors";
 
 const corsOptions = {
@@ -18,5 +19,6 @@ app.use(cors(corsOptions));
 
 app.use(workerRoutes);
 app.use(categoryRoutes);
+app.use(authRoutes)
 
 export default app;
