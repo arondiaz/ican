@@ -2,6 +2,8 @@ import app from "./app.js";
 import { sequelize } from "./database/database.js";
 import "./models/index.js";
 import { Category } from "./models/Categories.js";
+import { User } from "./models/index.js";
+import bcrypt from "bcrypt";
 
 const port = 4444;
 
@@ -22,6 +24,20 @@ async function main() {
       ]);
       console.log("Categorías iniciales creadas");
     }
+
+    // Crear usuario admin si no existe
+    const adminEmail = "admin@admin.com";
+    const adminPass = "root";
+    const existing = await User.findOne({ where: { email: adminEmail } });
+
+    if (!existing) {
+      await User.create({
+        email: adminEmail,
+        password: await bcrypt.hash(adminPass, 10),
+      });
+      console.log("-********* Usuario ADMIN creado *********-");
+    }
+
     app.listen(port);
 
     console.log("Server working on port", port);
