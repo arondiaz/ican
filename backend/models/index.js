@@ -2,6 +2,7 @@
 import { sequelize } from "../database/database.js";
 import { Worker } from "./Worker.js";
 import { Category } from "./Categories.js";
+import { User } from "./User.js";
 
 Worker.belongsToMany(Category, {
   through: "worker-category",
@@ -12,4 +13,4 @@ Category.belongsToMany(Worker, {
   foreignKey: "category_id",
 });
 
-export { sequelize, Worker, Category };
+export { sequelize, Worker, Category, User };
