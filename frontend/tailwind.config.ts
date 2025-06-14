@@ -13,6 +13,7 @@ const config: Config = {
       lg: "1200px",
     },
     extend: {
+     
       fontFamily: {
         archivo: "var(--font-archivo)",
       },
@@ -28,6 +29,7 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         "red-orange": "var(--color-red-orange)",
+        "original": "#096aab",
         // "red-orange": {
         //   500: 'color-mix(in srgb, theme("colors.red.500")50%,theme("colors.orange.500") 50%)',
 
