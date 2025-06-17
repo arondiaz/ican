@@ -28,11 +28,13 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        "red-orange": "var(--color-red-orange)",
         "original": "#096aab",
+        "dark": "#043F66",
+        "variant" : "#0B106F",
+        "dark-variant": "#11178E",
+        "soft": "#3A41BD",
         // "red-orange": {
         //   500: 'color-mix(in srgb, theme("colors.red.500")50%,theme("colors.orange.500") 50%)',
-
         // },
       },
     },
