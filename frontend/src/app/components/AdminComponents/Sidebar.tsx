@@ -1,11 +1,14 @@
-import { Users, Plus, Home, User } from "lucide-react";
+import { Users, Plus, Home, User, Globe } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import S from "../../assets/s.png";
 
 const data = {
   navMain: [
+    { title: "Web", url: "/", icon: Globe },
     { title: "Dashboard", url: "/admin", icon: Home },
     { title: "Trabajadores", url: "/admin/workers", icon: Users },
-    { title: "Agregar Trabajador", url: "/admin/addWorker", icon: Plus },
+    { title: "Agregar trabajador", url: "/admin/addWorker", icon: Plus },
   ],
 };
 
@@ -37,11 +40,20 @@ export function Sidebar() {
       <div className="flex items-center gap-3 mb-6">
         <Link href="/admin" className="flex items-center gap-3">
           <div className="flex items-center justify-center size-8 rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-            <span className="text-xl font-bold">S!</span>
+            <div className="flex flex-row items-center gap-6">
+              <Image
+                src={S}
+                alt="serviciosya! logo"
+                width={55}
+                height={55}
+                className="rounded-xl"
+                priority
+              />
+            </div>
           </div>
           <div>
-            <h3 className="font-semibold text-sm">Sistema Admin</h3>
-            <h4 className="text-xs text-gray-500">Panel de Control</h4>
+            <h3 className="font-semibold text-sm">Admin system</h3>
+            <h4 className="text-xs text-gray-500">Control panel</h4>
           </div>
         </Link>
       </div>
