@@ -1,4 +1,4 @@
-import { Users, Plus, Home, BarChart3, FileText, User } from "lucide-react";
+import { Users, Plus, Home, User } from "lucide-react";
 import Link from "next/link";
 
 const data = {
@@ -6,12 +6,18 @@ const data = {
     { title: "Dashboard", url: "/admin", icon: Home },
     { title: "Trabajadores", url: "/admin/workers", icon: Users },
     { title: "Agregar Trabajador", url: "/admin/addWorker", icon: Plus },
-    { title: "Reportes", url: "/admin/reports", icon: BarChart3 },
-    { title: "Documentos", url: "/admin/documents", icon: FileText },
   ],
 };
 
-function NavItem({url, icon: Icon, title,}: { url: string;  icon: any;  title: string; }) {
+function NavItem({
+  url,
+  icon: Icon,
+  title,
+}: {
+  url: string;
+  icon: React.ElementType;
+  title: string;
+}) {
   return (
     <li>
       <Link
@@ -28,7 +34,6 @@ function NavItem({url, icon: Icon, title,}: { url: string;  icon: any;  title: s
 export function Sidebar() {
   return (
     <aside className="flex flex-col h-full p-4 bg-white border-r">
-
       <div className="flex items-center gap-3 mb-6">
         <Link href="/admin" className="flex items-center gap-3">
           <div className="flex items-center justify-center size-8 rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
@@ -40,18 +45,13 @@ export function Sidebar() {
           </div>
         </Link>
       </div>
-
-      <nav className="flex-1">
-        <div className="text-xs font-medium text-gray-500 uppercase mb-2">
-          Navegación Principal
-        </div>
-        <ul className="space-y-1">
+      <nav className="flex-1 border-t">
+        <ul className="space-y-1 mt-4">
           {data.navMain.map((item) => (
             <NavItem key={item.title} {...item} />
           ))}
         </ul>
       </nav>
-
 
       <div className="mt-6 pt-4 border-t">
         <Link href="/admin/profile" className="flex items-center gap-3 text-sm">

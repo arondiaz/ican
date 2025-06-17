@@ -25,13 +25,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <div className="flex">
         <Sidebar />
-        <div className="flex flex-col w-full">
-          <div className="flex items-center justify-between w-full py-3 max-h-[60px] px-12 border-b border border-black">
-            <h3>admin panel</h3>
-            <p>hola</p>
-          </div>
-          {children}
-        </div>
+        <div className="flex flex-col w-full">{children}</div>
       </div>
     </>
   );
