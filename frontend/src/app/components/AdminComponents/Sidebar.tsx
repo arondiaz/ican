@@ -25,7 +25,7 @@ function NavItem({
     <li>
       <Link
         href={url}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition text-sm text-gray-700"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition text-md text-gray-700"
       >
         <Icon className="size-4" />
         <span>{title}</span>
@@ -36,10 +36,10 @@ function NavItem({
 
 export function Sidebar() {
   return (
-    <aside className="flex flex-col h-full p-4 bg-white border-r">
+    <aside className="flex flex-col h-full w-1/5 p-4  border-r">
       <div className="flex items-center gap-3 mb-6">
         <Link href="/admin" className="flex items-center gap-3">
-          <div className="flex items-center justify-center size-8 rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+          <div className="flex items-center justify-center size-12 rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
             <div className="flex flex-row items-center gap-6">
               <Image
                 src={S}
@@ -52,8 +52,10 @@ export function Sidebar() {
             </div>
           </div>
           <div>
-            <h3 className="font-semibold text-sm">Admin system</h3>
-            <h4 className="text-xs text-gray-500">Control panel</h4>
+            <h3 className="font-semibold text-md text-gray-500">
+              Admin system
+            </h3>
+            <h4 className="text-md text-gray-500">Control panel</h4>
           </div>
         </Link>
       </div>
@@ -68,11 +70,11 @@ export function Sidebar() {
       <div className="mt-6 pt-4 border-t">
         <Link href="/admin/profile" className="flex items-center gap-3 text-sm">
           <div className="flex items-center justify-center size-8 rounded-lg bg-sidebar-accent">
-            <User className="size-4 text-white" />
+            <User className="size-4 text-black" />
           </div>
           <div>
-            <div className="font-semibold">Administrador</div>
-            <div className="text-xs text-gray-500">admin@admin.com</div>
+            <div className="font-semibold text-gray-500">Administrador</div>
+            <div className="text-md text-gray-500">admin@admin.com</div>
           </div>
         </Link>
       </div>
