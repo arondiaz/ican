@@ -2,6 +2,8 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import S from "../assets/s.png";
 
 const Page = () => {
   const [email, setEmail] = useState("");
@@ -31,21 +33,28 @@ const Page = () => {
   return (
     <>
       <Navbar />
-      <section className="bg-original flex justify-center items-center h-[calc(100vh-80px)]">
+      <section className="bg-dark flex justify-center items-center h-[calc(100vh-80px)] text-gray-700">
         <div className="flex justify-center items-center">
           <div className=" bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
-            <h1 className="text-3xl font-bold text-center text-original mb-6">
-              S!
-            </h1>
+            <div className="flex justify-center items-center mb-4">
+              <Image
+                src={S}
+                alt="serviciosya! logo"
+                width={55}
+                height={55}
+                className="rounded-xl"
+                priority
+              />
+            </div>
 
             <div className="mb-4">
-              <label className="block text-md font-medium text-gray-700 mb-1">
-                Correo electrónico
+              <label className="block text-md font-medium mb-1">
+                Mail
               </label>
               <input
                 type="text"
                 placeholder=""
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-original"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -58,7 +67,7 @@ const Page = () => {
               <input
                 type="password"
                 placeholder=""
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-original"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
