@@ -51,7 +51,7 @@ const Page = () => {
   });
 
   return (
-    <section className="w-full py-12 bg-gray-50">
+    <section className="w-full py-12">
       <div className="container px-4 md:px-6">
         <div className="space-y-8 ">
           <div className="space-y-8">
@@ -67,7 +67,7 @@ const Page = () => {
                     onClick={() => setSelectedCategory(category)}
                     className={`rounded-full text-lg underline ${
                       selectedCategory === category
-                        ? "text-blue-600"
+                        ? "text-original"
                         : "text-black"
                     }`}
                   >

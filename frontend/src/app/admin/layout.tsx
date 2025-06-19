@@ -25,7 +25,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <div className="flex">
         <Sidebar />
-        <div className="flex flex-col w-full">{children}</div>
+        <div className="flex flex-col w-full bg-slate-700">{children}</div>
       </div>
     </>
   );

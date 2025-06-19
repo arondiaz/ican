@@ -31,8 +31,8 @@ const Page = () => {
   const porCiudades = Object.entries(porCiudad);
 
   return (
-    <section className="p-10 bg-gray-100 min-h-screen">
-      <h2 className="text-4xl font-bold mb-8 text-center text-gray-800">
+    <section className="p-10 bg-slate-700 min-h-screen">
+      <h2 className="text-4xl font-bold mb-8 text-center text-white">
         Panel de Administración
       </h2>
 

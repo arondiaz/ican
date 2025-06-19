@@ -83,7 +83,7 @@ const Page = () => {
 
   return (
     <>
-      <section className="min-h-screen bg-soft py-10 px-5 sm:px-10">
+      <section className="min-h-screen py-10 px-5 sm:px-10">
         <div className="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-md">
           <h2 className="text-3xl font-bold mb-6 text-center">
             Agregar nuevo trabajador
