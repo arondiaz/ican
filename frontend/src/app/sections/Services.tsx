@@ -48,14 +48,13 @@ const Services = () => {
     return categoryMatch && cityMatch;
   });
 
-  console.log(filteredServices);
   return (
-    <section className="w-full py-12 bg-gray-50">
+    <section className="w-full py-12 bg-slate-400 text-black" >
       <div className="container px-4 md:px-6">
         <div className="space-y-8 ">
           <div className="flex flex-col justify-center items-center text-center space-y-4 ">
             <Header
-              title="ServicioYa!"
+              title="ServiciosYa"
               className=" text-3xl font-bold tracking-tighter sm:text-4xl"
             />
 
@@ -88,14 +87,14 @@ const Services = () => {
             </div>
 
             <div className="space-y-3">
-              <h3 className="text-2xl md:text-3xl font-semibold mt-6">
+              <h3 className="text-2xl md:text-3xl font-semibold mt-6 text-black">
                 Ubicación
               </h3>
               <div className="w-full max-w-xs">
                 <select
                   value={selectedCity}
                   onChange={(e) => setSelectedCity(e.target.value)}
-                  className="w-full px-3 py-2 border border-input bg-background rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
+                  className="text-white w-full px-3 py-2 border border-input bg-background rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
                 >
                   {cities.map((city) => (
                     <option key={city} value={city}>
@@ -108,7 +107,7 @@ const Services = () => {
           </div>
 
           <div className="text-sm text-muted-foreground">
-            Mostrando {filteredServices.length} de {workers.length} productos
+            Mostrando {filteredServices.length} de {workers.length}
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">

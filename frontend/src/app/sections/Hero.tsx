@@ -33,7 +33,7 @@ const Hero = () => {
     console.log("Buscando:", searchQuery);
   };
   return (
-    <section className="w-full md:pt-12 md:-mb-16 h-screen bg-gradient-to-tr from-blue-900  to-bg-blue-900  flex justify-center items-center sm:pb-28">
+    <section className="w-full md:pt-12 md:-mb-16 h-screen bg-dark flex justify-center items-center sm:pb-28">
       <div className="container px-4 md:px-6 ">
         <div className="flex flex-col items-center space-y-8 text-center">
           <div className="space-y-4">
