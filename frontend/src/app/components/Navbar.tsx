@@ -10,12 +10,12 @@ const navItems = [
 
 const Navbar = () => {
   return (
-    <header className="bg-blue-50">
+    <header className="bg-original  ">
       <div className="container max-w-full flex justify-between items-center h-20">
         <Link href={"/"}>
-          <div className="flex flex-row items-center gap-6">
+          <div className="flex flex-row items-center gap-4">
             <Image src={S} alt="serviciosya! logo" width={55} height={55} className="rounded-xl" priority/>
-            <h2 className="hidden md:flex text-xl font-bold">ServiciosYa!</h2>
+            <h2 className="hidden md:flex text-xl font-bold text-white tracking-wide">ServiciosYa</h2>
           </div>
         </Link>
 

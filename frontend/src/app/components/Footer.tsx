@@ -34,7 +34,7 @@ const Footer = () => {
     }
   };
   return (
-    <footer className="bg-blue-900 text-white ">
+    <footer className="bg-dark text-white ">
       <div className="container">
         <div className="pt-16">
           <div className="grid md:grid-cols-3 md:items-center">
