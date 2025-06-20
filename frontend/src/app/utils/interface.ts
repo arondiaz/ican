@@ -7,9 +7,11 @@ export interface IWorker {
   city: string;
   image?: string;
   id: number;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface ICategory {
   name: string;
-  id:number;
+  id: number;
 }
