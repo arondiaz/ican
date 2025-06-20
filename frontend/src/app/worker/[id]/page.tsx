@@ -1,5 +1,4 @@
 import Footer from "@/app/components/Footer";
-import Header from "@/app/components/Header";
 import Navbar from "@/app/components/Navbar";
 import React from "react";
 import WorkerProfile from "../../components/WorkerProfile";
@@ -13,7 +12,7 @@ type PageProps = {
 
 async function getWorkerPerId(params: string) {
   const url = `http://localhost:4444/workers/${params}}`;
-  const response = await fetch(url);
+  const response = await fetch(url, { cache: "no-store" });
   const data = await response.json();
 
   return data;
@@ -26,11 +25,7 @@ const page = async ({ params }: PageProps) => {
     <>
       <Navbar />
       <section className="container w-full md:pt-12 md:-mb-16 h-screen ">
-        <div className="flex justify-center flex-col">
-          <Header title={""} className="uppercase text-4xl font-semibold" />
-
-          <WorkerProfile worker={worker} />
-        </div>
+        <WorkerProfile worker={worker} />
       </section>
 
       <Footer />

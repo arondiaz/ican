@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         //bg color
-        className={`${archivo.variable} antialiased bg-teal-50`}
+        className={`${archivo.variable} antialiased bg-slate-400`}
       >
         {children}
       </body>
