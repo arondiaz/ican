@@ -1,5 +1,5 @@
 import React from "react";
-//import Image from "next/image";
+import Image from "next/image";
 import { IWorker } from "../utils/interface";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
@@ -15,14 +15,14 @@ const FilteredCards = ({ worker }: Props) => {
         key={worker.id}
         className="bg-white rounded-lg shadow-sm border hover:shadow-md transition-all cursor-pointer rounded-b-xl"
       >
-        <div className="aspect-square overflow-hidden rounded-2xl">
-          {/* <Image
-          src={worker.image || "/placeholder.svg"}
-          alt={worker.name}
-          className="w-full h-full object-cover "
-          width={45}
-          height={45}
-        /> */}
+        <div className="aspect-square overflow-hidden ">
+          <Image
+            src={worker.image || "/placeholder.svg"}
+            alt={worker.name}
+            className="w-full h-full object-cover "
+            width={600}
+            height={400}
+          />
         </div>
         <div className="p-4 space-y-3 bg-original text-white rounded-b-xl max-w-full">
           <div className="space-y-1">
