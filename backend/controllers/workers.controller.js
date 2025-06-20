@@ -1,5 +1,7 @@
 import { Category } from "../models/Categories.js";
 import { Worker } from "../models/Worker.js";
+import { v2 as cloudinary } from "cloudinary";
+import streamifier from "streamifier";
 
 export const getWorkers = async (req, res) => {
   try {
@@ -17,7 +19,7 @@ export const getWorkers = async (req, res) => {
 
 export const createWorker = async (req, res) => {
   try {
-    const { name, description, phone, city, categoryIds } = req.body;
+    const { name, description, phone, city, categoryIds, image } = req.body;
 
     if (!Array.isArray(categoryIds) || categoryIds.length === 0) {
       return res
@@ -25,21 +27,51 @@ export const createWorker = async (req, res) => {
         .json({ message: "should select one category or more." });
     }
 
-    const newWorker = await Worker.create({
-      name,
-      description,
-      phone,
-      city,
-    });
+    const createAndRespond = async (imageUrl) => {
+      const newWorker = await Worker.create({
+        name,
+        description,
+        phone,
+        city,
+        image: imageUrl, // puede ser null
+      });
 
-    await newWorker.setCategories(categoryIds);
+      await newWorker.setCategories(categoryIds);
 
-    const workerWithCategories = await Worker.findByPk(newWorker.id, {
-      include: Category,
-    });
+      const workerWithCategories = await Worker.findByPk(newWorker.id, {
+        include: Category,
+      });
 
-    return res.status(200).json(workerWithCategories);
+      return res.status(200).json(workerWithCategories);
+    };
+
+    // si suben archivo (imagen nueva)
+    if (req.file) {
+      const uploadStream = cloudinary.uploader.upload_stream(
+        { folder: "perfiles" },
+        async (error, result) => {
+          if (error) {
+            console.error(error);
+            return res
+              .status(500)
+              .json({ error: "Error uploading image to Cloudinary." });
+          }
+
+          return await createAndRespond(result.secure_url);
+        }
+      );
+
+      streamifier.createReadStream(req.file.buffer).pipe(uploadStream);
+
+    } else if (image) {
+      // si envían un URL directo
+      return await createAndRespond(image);
+    } else {
+      // no hay imagen
+      return await createAndRespond(null);
+    }
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ message: error.message });
   }
 };
