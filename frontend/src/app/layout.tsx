@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: "Encontrá el servicio que estás buscando",
   icons: {
     icon: "/android-chrome-192x192.png",
-    shortcut: "/favicon.svg",
+    shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
 };
