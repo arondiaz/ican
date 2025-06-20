@@ -13,7 +13,7 @@ const FilteredCards = ({ worker }: Props) => {
     <Link href={`worker/${worker.id}`}>
       <div
         key={worker.id}
-        className="bg-white rounded-lg shadow-sm border hover:shadow-md transition-all cursor-pointer"
+        className="bg-white rounded-lg shadow-sm border hover:shadow-md transition-all cursor-pointer rounded-b-xl"
       >
         <div className="aspect-square overflow-hidden rounded-2xl">
           {/* <Image
@@ -32,7 +32,7 @@ const FilteredCards = ({ worker }: Props) => {
               </h4>
 
               <div className="flex flex-row">
-                <MapPin className="hidden md:flex" />
+                <MapPin className="hidden md:flex mr-1" />
                 <h3 className="text-sm md:text-base text-muted-foreground">
                   {worker.city}
                 </h3>
@@ -48,7 +48,7 @@ const FilteredCards = ({ worker }: Props) => {
             </span>
           </div>
 
-          <div className="flex flex-row  gap-2 max-w-max">
+          <div className="flex flex-col  md:flex-row md:gap-2 max-w-max">
             {worker.categories?.map((cat) => (
               <p
                 key={cat.id}

@@ -49,18 +49,16 @@ const Services = () => {
   });
 
   return (
-    <section className="w-full py-12 mt-10 bg-slate-400 text-black" >
+    <section className="w-full py-12 md:mt-16 bg-slate-400 text-black" >
       <div className="container px-4 md:px-6">
         <div className="space-y-8 ">
           <div className="flex flex-col justify-center items-center text-center space-y-4 ">
             <Header
-              title="ServiciosYa"
-              className=" text-3xl font-bold tracking-tighter sm:text-4xl"
+              title="Encontrá el servicio que estás buscando..."
+              className="text-3xl font-bold tracking-tighter md:text-4xl"
             />
 
-            <p className="text-xl lg:text-xl">
-              Encontrá el servicio que estás buscando
-            </p>
+          
           </div>
 
           <div className="space-y-8">
