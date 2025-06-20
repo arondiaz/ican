@@ -20,4 +20,7 @@ export const Worker = sequelize.define("workers", {
   city: {
     type: DataTypes.STRING,
   },
+  image:{
+    type: DataTypes.STRING,
+  }
 });
