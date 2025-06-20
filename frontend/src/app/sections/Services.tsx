@@ -49,7 +49,7 @@ const Services = () => {
   });
 
   return (
-    <section className="w-full py-12 bg-slate-400 text-black" >
+    <section className="w-full py-12 mt-10 bg-slate-400 text-black" >
       <div className="container px-4 md:px-6">
         <div className="space-y-8 ">
           <div className="flex flex-col justify-center items-center text-center space-y-4 ">
