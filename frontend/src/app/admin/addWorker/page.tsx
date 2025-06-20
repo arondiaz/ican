@@ -11,6 +11,7 @@ const Page = () => {
     phone: "",
     city: "",
     categoryIds: [] as number[],
+    image: "",
   });
 
   const categoryOptions = [
@@ -51,20 +52,49 @@ const Page = () => {
     }
   };
 
+  const uploadImageToCloudinary = async (file: File) => {
+    const CLOUD = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+    const PRESET = process.env.NEXT_PUBLIC_CLOUDINARY_PRESET;
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", PRESET as string);
+
+    const res = await fetch(
+      `https://api.cloudinary.com/v1_1/${CLOUD}/image/upload`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await res.json();
+    return data.secure_url;
+  };
+
   const onSubmitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ ...data, image });
+    let imageUrl = "";
+
+    if (image) {
+      imageUrl = await uploadImageToCloudinary(image);
+    }
+
+    const payload = {
+      ...data,
+      image: imageUrl,
+    };
+
     const url = "http://localhost:4444/workers";
 
     try {
-      console.log(data);
       const res = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
+      if (!res.ok) throw new Error("Error al enviar los datos");
 
       await res.json();
       alert("Usuario creado correctamente");
@@ -74,18 +104,18 @@ const Page = () => {
         phone: "",
         city: "",
         categoryIds: [] as number[],
+        image: "",
       });
     } catch (error) {
       console.log(error);
     }
-    //formdata
   };
 
   return (
     <>
-      <section className="min-h-screen py-10 px-5 sm:px-10">
+      <section className="min-h-screen py-10 px-5 sm:px-10 text-black">
         <div className="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-md">
-          <h2 className="text-3xl font-bold mb-6 text-center">
+          <h2 className="text-3xl text-black font-bold mb-6 text-center">
             Agregar nuevo trabajador
           </h2>
 
