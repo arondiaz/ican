@@ -79,7 +79,7 @@ export const createWorker = async (req, res) => {
 export const updateWorker = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, description, city, phone, categoryIds } = req.body;
+    const { name, description, city, phone, image, categoryIds } = req.body;
 
     const updateWorker = await Worker.findByPk(id, {
       include: {
@@ -94,6 +94,7 @@ export const updateWorker = async (req, res) => {
     updateWorker.description = description;
     updateWorker.city = city;
     updateWorker.phone = phone;
+    updateWorker.image = image;
     updateWorker.categoryIds = categoryIds;
     await updateWorker.save();
 
