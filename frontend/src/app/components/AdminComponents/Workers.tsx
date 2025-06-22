@@ -1,5 +1,5 @@
 import React from "react";
-//import Image from "next/image";
+import Image from "next/image";
 import { IWorker } from "@/app/utils/interface";
 import Link from "next/link";
 
@@ -15,13 +15,13 @@ const Workers = ({ worker }: Props) => {
         className="rounded-lg shadow-sm border hover:shadow-md transition-all cursor-pointer"
       >
         <div className="aspect-square overflow-hidden rounded-2xl">
-          {/* <Image
+          <Image
           src={worker.image || "/placeholder.svg"}
           alt={worker.name}
           className="w-full h-full object-cover "
           width={45}
           height={45}
-        /> */}
+        />
         </div>
         <div className="p-4 space-y-3">
           <div className="space-y-1">

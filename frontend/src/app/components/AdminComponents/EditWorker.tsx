@@ -55,6 +55,13 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
     router.push("/admin/workers");
   };
 
+  const handleDelete = async (id: number) => {
+    await fetch(`http://localhost:4444/workers/${worker.id}`, {
+      method: "DELETE",
+    });
+    router.push("/admin/workers");
+  };
+
   return (
     <form onSubmit={handleSubmit} className="space-y-6 ">
       {/* Imagen */}
@@ -206,6 +213,7 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
         <button
           type="submit"
           className="bg-red-800 text-white px-6 py-2 rounded-md"
+          onClick={() => handleDelete(worker.id)}
         >
           Eliminar{" "}
         </button>
