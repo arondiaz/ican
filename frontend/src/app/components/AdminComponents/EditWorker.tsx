@@ -3,8 +3,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { IWorker } from "@/app/utils/interface";
 import Image from "next/image";
-import upload from "../../assets/upload.png";
-
 
 export default function EditWorker({ worker }: { worker: IWorker }) {
   const [data, setData] = useState({
@@ -12,12 +10,12 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
     phone: worker.phone || "",
     description: worker.description || "",
     city: worker.city || "",
-    categoryIds: worker.categoryIds || [] as number[] ,
-    image: worker.image
+    categoryIds: worker.categories?.map(category => category.id) || [],
+    image: worker.image,
   });
 
   const [image, setImage] = useState<File | null>(null);
-  
+
   const router = useRouter();
 
   const categoryOptions = [
@@ -38,7 +36,7 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
     { value: "Casilda", name: "Casilda" },
   ];
 
-  const handleChange = (e) => {
+  const handleChange = (e : any) => {
     const { name, value } = e.target;
 
     if (name === "categoryIds") {
@@ -74,7 +72,6 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    
     e.preventDefault();
 
     let imageUrl = "";
@@ -85,13 +82,14 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
 
     const payload = {
       ...data,
-      image: image ? imageUrl : data.image
+      image: image ? imageUrl : data.image,
     };
 
     await fetch(`http://localhost:4444/workers/${worker.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
+      cache: "no-store"
     });
     router.push("/admin/workers");
   };
@@ -114,27 +112,30 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
           Imagen
         </label>
         <div className="flex items-center gap-4">
-        <label htmlFor="image" className="cursor-pointer">
-                      <Image
-                        src={imageSrc}
-                        width={100}
-                        height={100}
-                        alt="Vista previa"
-                        className="rounded-md border"
-                      />
-                    </label>
-                    <input
-                      type="file"
-                      id="image"
-                      accept="image/*"
-                      hidden
-                      //required
-                  onChange={(e) => {
-                    console.log(e);
-                        const file = e.target.files?.[0];
-                        if (file) setImage(file);
-                      }}
-                    />
+          <label htmlFor="image" className="cursor-pointer">
+            {imageSrc && (
+              <Image
+                src={imageSrc}
+                width={200}
+                height={200}
+                priority
+                alt="Vista previa"
+                className="rounded-md border"
+              />
+            )}
+          </label>
+          <input
+            type="file"
+            id="image"
+            accept="image/*"
+            hidden
+            //required
+            onChange={(e) => {
+              console.log(e);
+              const file = e.target.files?.[0];
+              if (file) setImage(file);
+            }}
+          />
         </div>
       </div>
 
@@ -229,7 +230,7 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
           id="categoryIds"
           name="categoryIds"
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:ring-blue-500 focus:border-blue-500"
-          value={data.categoryIds}
+          value={data.categoryIds as []}
           onChange={handleChange}
           required
         >
