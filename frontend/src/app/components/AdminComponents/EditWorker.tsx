@@ -2,15 +2,22 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { IWorker } from "@/app/utils/interface";
+import Image from "next/image";
+import upload from "../../assets/upload.png";
+
 
 export default function EditWorker({ worker }: { worker: IWorker }) {
-  const [formData, setFormData] = useState({
+  const [data, setData] = useState({
     name: worker.name || "",
     phone: worker.phone || "",
     description: worker.description || "",
     city: worker.city || "",
-    categoryIds: [] as number[],
+    categoryIds: worker.categoryIds || [] as number[] ,
+    image: worker.image
   });
+
+  const [image, setImage] = useState<File | null>(null);
+  
   const router = useRouter();
 
   const categoryOptions = [
@@ -39,24 +46,58 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
       const values = Array.from(options).map((option) =>
         parseInt(option.value)
       );
-      setFormData((prev) => ({ ...prev, categoryIds: values }));
+      setData((prev) => ({ ...prev, categoryIds: values }));
     } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
+      setData((prev) => ({ ...prev, [name]: value }));
     }
   };
 
+  const imageSrc = image ? URL.createObjectURL(image) : worker.image;
+
+  const uploadImageToCloudinary = async (file: File) => {
+    const CLOUD = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+    const PRESET = process.env.NEXT_PUBLIC_CLOUDINARY_PRESET;
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", PRESET as string);
+
+    const res = await fetch(
+      `https://api.cloudinary.com/v1_1/${CLOUD}/image/upload`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await res.json();
+    return data.secure_url;
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    
     e.preventDefault();
+
+    let imageUrl = "";
+
+    if (image) {
+      imageUrl = await uploadImageToCloudinary(image);
+    }
+
+    const payload = {
+      ...data,
+      image: image ? imageUrl : data.image
+    };
+
     await fetch(`http://localhost:4444/workers/${worker.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(payload),
     });
     router.push("/admin/workers");
   };
 
   const handleDelete = async (id: number) => {
-    await fetch(`http://localhost:4444/workers/${worker.id}`, {
+    await fetch(`http://localhost:4444/workers/${id}`, {
       method: "DELETE",
     });
     router.push("/admin/workers");
@@ -73,7 +114,7 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
           Imagen
         </label>
         <div className="flex items-center gap-4">
-          {/* <label htmlFor="image" className="cursor-pointer">
+        <label htmlFor="image" className="cursor-pointer">
                       <Image
                         src={imageSrc}
                         width={100}
@@ -89,10 +130,11 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
                       hidden
                       //required
                   onChange={(e) => {
+                    console.log(e);
                         const file = e.target.files?.[0];
                         if (file) setImage(file);
                       }}
-                    /> */}
+                    />
         </div>
       </div>
 
@@ -109,7 +151,7 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
           id="name"
           name="name"
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:ring-blue-500 focus:border-blue-500"
-          value={formData.name}
+          value={data.name}
           onChange={handleChange}
           required
         />
@@ -128,7 +170,7 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
           name="description"
           rows={3}
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:ring-blue-500 focus:border-blue-500"
-          value={formData.description}
+          value={data.description}
           onChange={handleChange}
           required
         />
@@ -147,7 +189,7 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
           id="phone"
           name="phone"
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:ring-blue-500 focus:border-blue-500"
-          value={formData.phone}
+          value={data.phone}
           onChange={handleChange}
           required
         />
@@ -161,7 +203,7 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
         </label>
         <select
           name="city"
-          value={formData.city}
+          value={data.city}
           onChange={handleChange}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm py-2"
           required
@@ -187,7 +229,7 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
           id="categoryIds"
           name="categoryIds"
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:ring-blue-500 focus:border-blue-500"
-          value={formData.categoryIds}
+          value={data.categoryIds}
           onChange={handleChange}
           required
         >
