@@ -16,7 +16,7 @@ const navItems = [
   },
   {
     href: "/about",
-    label: "Sobre ServiciosYa",
+    label: "Sobre Servicio Libre",
   },
 ];
 
@@ -40,7 +40,7 @@ const Footer = () => {
           <div className="grid md:grid-cols-3 md:items-center">
             <div className="md:col-span-2">
               <h2 className="text-4xl mt-4 font-extralight md:text-7xl lg:text-8xl">
-                ServiciosYa!
+                Servicio Libre
               </h2>
               <div className="my-10 mb-2 flex flex-row gap-2">
                 <Button

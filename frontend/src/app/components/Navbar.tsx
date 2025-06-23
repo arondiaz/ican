@@ -5,7 +5,7 @@ import S from "../assets/s.png";
 
 const navItems = [
   { href: "/servicios", name: "Servicios" },
-  { href: "/about", name: "Sobre ServiciosYa!" },
+  { href: "/about", name: "Sobre Servicio Libre" },
 ];
 
 const Navbar = () => {
@@ -16,14 +16,14 @@ const Navbar = () => {
           <div className="flex flex-row items-center gap-4">
             <Image
               src={S}
-              alt="serviciosya! logo"
+              alt="serviciolibre logo"
               width={55}
               height={55}
               className="rounded-xl"
               priority
             />
             <h2 className="hidden md:flex text-xl font-bold text-black tracking-wide">
-              ServiciosYa
+              Servicio Libre
             </h2>
           </div>
         </Link>

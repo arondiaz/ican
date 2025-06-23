@@ -10,7 +10,7 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  title: "ServiciosYa!",
+  title: "Servicio Libre",
   description: "Encontrá el servicio que estás buscando",
   icons: {
     icon: "/android-chrome-192x192.png",
