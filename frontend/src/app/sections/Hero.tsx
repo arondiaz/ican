@@ -7,10 +7,10 @@ import Fuse from "fuse.js";
 import { SearchSuggestions } from "./search-suggestions";
 
 const heroImages = [
-  "/images/hero/mec.jpg",
-  "/images/hero/cerrajero.jpg",
-  "/images/hero/elec.jpg",
-  "/images/hero/obra.jpg",
+  "/images/hero/cerrajero.webp",
+  "/images/hero/obra.webp",
+  "/images/hero/mec.webp",
+  "/images/hero/elec.webp",
 ];
 
 // Implementar la interaz IWorker
@@ -22,7 +22,6 @@ interface Worker {
   phone?: string;
   description?: string;
 }
-
 
 const Hero = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -132,13 +131,13 @@ const Hero = () => {
 
     setIsSearching(true);
 
-    // console.log("Búsqueda:", searchQuery); 
-    // console.log("Total workers:", getWorkers.length); 
+    // console.log("Búsqueda:", searchQuery);
+    // console.log("Total workers:", getWorkers.length);
 
     const matchedItems = performSearch(searchQuery, getWorkers);
 
-    // console.log("Resultados encontrados:", matchedItems.length); 
-    // console.log("Resultados:", matchedItems); 
+    // console.log("Resultados encontrados:", matchedItems.length);
+    // console.log("Resultados:", matchedItems);
 
     setResults(matchedItems);
     setShowResults(true);
@@ -172,7 +171,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative w-full md:pt-12 md:-mb-16 min-h-[500px] sm:min-h-[700px] md:min-h-[550px] lg:min-h-[600px] flex justify-center md:justify-start items-start sm:pb-28 overflow-hidden">
+    <section className="relative w-full md:pt-12 md:-mb-16 min-h-[500px] sm:min-h-[700px] md:min-h-[550px] lg:min-h-[600px] flex justify-center  items-start sm:pb-28 overflow-hidden">
       {heroImages.map((image, index) => (
         <div
           key={index}
@@ -187,7 +186,7 @@ const Hero = () => {
         />
       ))}
 
-      <div className="flex justify-start relative z-10 md:ml-40 bg-white/5 backdrop-blur-sm p-6 rounded-xl shadow-xl mt-8 md:mt-16 w-1/3">
+      <div className="flex justify-center relative z-10  bg-white/5 backdrop-blur-sm p-6 rounded-xl shadow-xl mt-8 md:mt-16 w-1/3">
         <div className="flex flex-col items-center w-full max-w-4xl">
           <h1 className="font-bold tracking-tighter sm:text-4xl md:text-6xl lg:text-7xl mb-8 text-white">
             Necesito un..
@@ -236,27 +235,36 @@ const Hero = () => {
           {/* Resultados de búsqueda */}
           {showResults && (
             <div className="w-full max-w-4xl mt-8 bg-white/95 backdrop-blur-sm rounded-xl shadow-xl p-6 max-h-96 overflow-y-auto">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-semibold text-gray-800">
-                  Resultados de búsqueda ({results.length})
-                </h3>
-                <button
-                  onClick={() => setShowResults(false)}
-                  className="text-gray-500 hover:text-gray-700"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+              <div className="flex justify-between items-center">
+                {results.length > 6 && (
+                  <div className="text-center my-4">
+                    <Link
+                      href={`/search?q=${encodeURIComponent(searchQuery)}`}
+                      className="px-4 py-2 bg-original text-white rounded-md  transition-colors"
+                    >
+                      Ver todos los resultados ({results.length})
+                    </Link>
+                  </div>
+                )}
+                <div className="flex justify-end">
+                  <button
+                    onClick={() => setShowResults(false)}
+                    className="text-gray-500 hover:text-gray-700"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
               </div>
 
               {results.length > 0 ? (
-                <div className="grid gap-4 md:grid-cols-2">
+                <div className="grid gap-4 md:grid-cols-1 ">
                   {results.slice(0, 6).map((worker) => (
                     <div
                       key={worker.id}
-                      className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow bg-white"
+                      className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow bg-white "
                     >
-                      <div className="flex items-start justify-between">
-                        <div className="flex-1">
+                      <Link href={`/worker/${worker.id}`}>
+                        <div className="flex items-start justify-between">
                           <div className="flex items-center gap-2 mb-2">
                             <User className="w-4 h-4 text-gray-500" />
                             <h4 className="font-semibold text-gray-800">
@@ -281,17 +289,8 @@ const Hero = () => {
                               </span>
                             ))}
                           </div>
-
-                   
                         </div>
-
-                        <Link
-                          href={`/worker/${worker.id}`}
-                          className="px-3 py-1 bg-blue-600 text-white text-sm rounded-md hover:bg-blue-700 transition-colors"
-                        >
-                          Ver perfil
-                        </Link>
-                      </div>
+                      </Link>
                     </div>
                   ))}
                 </div>
@@ -304,17 +303,6 @@ const Hero = () => {
                     Intenta con términos como "electricista", "plomero en
                     rosario", etc.
                   </p>
-                </div>
-              )}
-
-              {results.length > 6 && (
-                <div className="text-center mt-4">
-                  <Link
-                    href={`/search?q=${encodeURIComponent(searchQuery)}`}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-                  >
-                    Ver todos los resultados ({results.length})
-                  </Link>
                 </div>
               )}
             </div>
