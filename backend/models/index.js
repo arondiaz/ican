@@ -5,11 +5,11 @@ import { Category } from "./Categories.js";
 import { User } from "./User.js";
 
 Worker.belongsToMany(Category, {
-  through: "worker-category",
+  through: "worker_category",
   foreignKey: "worker_id",
 });
 Category.belongsToMany(Worker, {
-  through: "worker-category",
+  through: "worker_category",
   foreignKey: "category_id",
 });
 

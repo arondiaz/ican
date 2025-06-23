@@ -9,6 +9,9 @@ export const Category = sequelize.define("categories", {
   },
   name: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
+ 
+},  {
+  timestamps: true, // <-- acá va la configuración
 });

@@ -15,4 +15,9 @@ export const User = sequelize.define("user", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+
+    
+
+},  {
+  timestamps: true, // <-- acá va la configuración
 });
