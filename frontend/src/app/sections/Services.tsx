@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import FilteredCards from "../components/FilteredCards";
 import { IWorker } from "../utils/interface";
 import { Skeleton } from "../components/Skeleton";
+import { MapPin, Tag } from "lucide-react";
 
 const Services = () => {
   const [selectedCategory, setSelectedCategory] = useState("Todas");
@@ -95,39 +96,45 @@ const Services = () => {
             />
           </div>
 
-          <div className="flex justify-start items-center">
-            <div>
-              <h3 className="text-2xl md:text-3xl font-semibold ">
-                Ubicación
-              </h3>
-              <select
-                value={selectedCity}
-                onChange={(e) => setSelectedCity(e.target.value)}
-                className="text-black w-full max-w-xs px-3 py-2 border border-input bg-background rounded-md text-sm focus:outline-none"
-              >
-                {["Todas las ciudades", "Rosario", "Casilda", "Santa Fe"].map(
-                  (city) => (
-                    <option key={city}>{city}</option>
-                  )
-                )}
-              </select>
-            </div>
+          <div className="p-6 ">
+            <div className="container grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-3">
+                <label className="flex items-center gap-2">
+                  <MapPin className="h-5 w-5 text-primary" />
+                  <h3 className="text-lg font-semibold text-foreground">
+                    Ubicación
+                  </h3>
+                </label>
+                <select
+                  value={selectedCity}
+                  onChange={(e) => setSelectedCity(e.target.value)}
+                  className="w-full rounded-xl border border-gray-300 bg-white text-sm px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  {["Todas las ciudades", "Rosario", "Casilda", "Santa Fe"].map(
+                    (city) => (
+                      <option key={city}>{city}</option>
+                    )
+                  )}
+                </select>
+              </div>
 
-            <div className="ml-8">
-              <h3 className="text-2xl md:text-3xl font-semibold">
-                Categorías
-              </h3>
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="text-black w-full max-w-xs px-3 py-2 border border-input bg-background rounded-md text-sm focus:outline-none"
-              >
-                {categoryOptions.map(
-                  (cat) => (
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <Tag className="h-5 w-5 text-primary" />
+                  <h3 className="text-lg font-semibold text-foreground">
+                    Categorías
+                  </h3>
+                </div>
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="w-full rounded-xl border border-gray-300 bg-white text-sm px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  {categoryOptions.map((cat) => (
                     <option key={cat.value}>{cat.name}</option>
-                  )
-                )}
-              </select>
+                  ))}
+                </select>
+              </div>
             </div>
           </div>
 

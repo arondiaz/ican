@@ -13,33 +13,33 @@ const FilteredCards = ({ worker }: Props) => {
     <Link href={`worker/${worker.id}`}>
       <div
         key={worker.id}
-        className="bg-white rounded-lg shadow-sm border hover:shadow-md transition-all cursor-pointer rounded-b-xl"
+        className="bg-white/80 shadow-sm border hover:shadow-md transition-all cursor-pointer rounded-2xl text-gray-700"
       >
         <div className="aspect-square overflow-hidden ">
           <Image
             src={worker.image || "/placeholder.svg"}
             alt={worker.name}
-            className="w-full h-full object-cover "
+            className="w-full h-full object-cover rounded-b-3xl rounded-t-2xl p-2"
             width={600}
             height={400}
           />
         </div>
-        <div className="p-4 space-y-3 bg-original text-white rounded-b-xl max-w-full">
+        <div className="p-4 space-y-3  rounded-b-3xl max-w-full">
           <div className="space-y-1">
             <div className="flex items-center justify-between">
-              <h4 className="md:text-xl lg:text-2xl font-semibold text-lg line-clamp-1">
+              <h4 className="md:text-xl  font-semibold text-lg line-clamp-1">
                 {worker.name}
               </h4>
 
-              <div className="flex flex-row">
-                <MapPin className="hidden md:flex mr-1" />
+              <div className="flex flex-row items-center">
+                <MapPin className="hidden md:flex mr-1 h-8" />
                 <h3 className="text-sm md:text-base text-muted-foreground">
                   {worker.city}
                 </h3>
               </div>
             </div>
-            <p className="hidden text-sm text-muted-foreground line-clamp-2">
-              {worker.description}
+            <p className=" text-md text-muted-foreground line-clamp-2">
+              {`${worker.description.slice(0, 30)}...`}
             </p>
           </div>
           <div className="flex items-center justify-between">
@@ -52,7 +52,7 @@ const FilteredCards = ({ worker }: Props) => {
             {worker.categories?.map((cat) => (
               <p
                 key={cat.id}
-                className="text-sm md:text-md lg:text-base bg-dark px-2 rounded-lg"
+                className="text-sm md:text-md lg:text-base bg-gray-600 px-2 rounded-lg text-white"
               >
                 {" "}
                 {cat.name}
