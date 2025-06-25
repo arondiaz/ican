@@ -4,7 +4,6 @@ import Image from "next/image";
 import S from "../assets/s.png";
 
 const navItems = [
-  { href: "/servicios", name: "Servicios" },
   { href: "/about", name: "Sobre Servicio Libre" },
 ];
 
