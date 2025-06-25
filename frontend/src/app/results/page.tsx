@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import FilteredCards from "../components/FilteredCards";
@@ -26,7 +26,7 @@ const Page = () => {
   console.log(resultSearch);
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 mb-10">
         {resultSearch.length > 1 ? (
           resultSearch.map((worker) => (
             <FilteredCards key={worker.id} worker={worker} />

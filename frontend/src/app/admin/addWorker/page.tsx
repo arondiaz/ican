@@ -23,6 +23,8 @@ const Page = () => {
     { value: "6", name: "Gomero" },
     { value: "7", name: "Instalador de aire" },
     { value: "8", name: "Cerrajero" },
+    { value: "9", name: "Jardinero" },
+    { value: "10", name: "Limpieza" },
   ];
 
   const cityOptions = [
