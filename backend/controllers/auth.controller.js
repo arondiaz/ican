@@ -65,6 +65,12 @@ export const metrics = async (req, res) => {
         "Instalador de aires": workers.filter((w) =>
           w.categories.some((c) => c.name === "Instalador de aire")
         ).length,
+        Jardineros: workers.filter((w) =>
+          w.categories.some((c) => c.name === "Jardinero")
+        ).length,
+        Limpieza: workers.filter((w) =>
+          w.categories.some((c) => c.name === "Limpieza")
+        ).length,
       },
       porCiudad: {
         Rosario: workers.filter((w) => w.city === "Rosario").length,
