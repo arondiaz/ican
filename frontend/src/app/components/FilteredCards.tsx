@@ -27,7 +27,7 @@ const FilteredCards = ({ worker }: Props) => {
         <div className="p-4 space-y-3  rounded-b-3xl max-w-full">
           <div className="space-y-1">
             <div className="flex items-center justify-between">
-              <h4 className="md:text-xl  font-semibold text-lg line-clamp-1">
+              <h4 className="text-base md:text-xl  font-semibold line-clamp-1">
                 {worker.name}
               </h4>
 
@@ -38,8 +38,8 @@ const FilteredCards = ({ worker }: Props) => {
                 </h3>
               </div>
             </div>
-            <p className=" text-md text-muted-foreground line-clamp-2">
-              {`${worker.description.slice(0, 30)}...`}
+            <p className="hidden md:flex text-sm md:text-md text-muted-foreground line-clamp-2">
+              {`${worker.description?.slice(0, 30)}...`}
             </p>
           </div>
           <div className="flex items-center justify-between">

@@ -142,7 +142,7 @@ const Services = () => {
             Mostrando {visibleWorkers.length} de {filtered.length} resultados
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
             {visibleWorkers.map((worker) => (
               <FilteredCards key={worker.id} worker={worker} />
             ))}
