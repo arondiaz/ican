@@ -1,8 +1,10 @@
 import { Router } from "express";
-import { getAllWorkersPerCategory } from "../controllers/categories.controller.js";
+import { getAllWorkersPerCategory, mainSearch } from "../controllers/categories.controller.js";
 
 const router = Router();
 
-router.get("/categories/:name", getAllWorkersPerCategory);
+// router.get("/categories/:name", getAllWorkersPerCategory);
+router.get("/categories/:search", mainSearch);
+
 
 export default router;
