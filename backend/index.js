@@ -21,6 +21,8 @@ async function main() {
         { name: "Gomero" },
         { name: "Instalador de aire" },
         { name: "Cerrajero" },
+        { name: "Jardinero" },
+        { name: "Limpieza" },
       ]);
       console.log("Categorías iniciales creadas");
     }
