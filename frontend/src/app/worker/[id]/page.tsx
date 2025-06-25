@@ -1,4 +1,3 @@
-import Footer from "@/app/components/Footer";
 import Navbar from "@/app/components/Navbar";
 import React from "react";
 import WorkerProfile from "../../components/WorkerProfile";
@@ -20,15 +19,12 @@ async function getWorkerPerId(params: string) {
 
 const page = async ({ params }: PageProps) => {
   const worker = await getWorkerPerId(params.id);
-
   return (
     <>
       <Navbar />
-      <section className="container w-full md:pt-12 md:-mb-16 h-screen ">
+      <section className="container w-full md:pt-10 md:-mb-16 h-screen ">
         <WorkerProfile worker={worker} />
       </section>
-
-      <Footer />
     </>
   );
 };
