@@ -25,19 +25,19 @@ SELECT
 FROM numbers;
 
 -- Insertar 2 categorías aleatorias por trabajador
-INSERT INTO worker_category (worker_id, category_id, createdAt, updatedAt)
+INSERT IGNORE INTO worker_category (worker_id, category_id, createdAt, updatedAt)
 SELECT
   w.id,
-  FLOOR(1 + RAND() * 5),
+  FLOOR(1 + RAND() * 11),
   NOW(),
   NOW()
 FROM workers w
 WHERE w.id BETWEEN (SELECT MIN(id) FROM workers) AND (SELECT MIN(id) FROM workers) + 49;
 
-INSERT INTO worker_category (worker_id, category_id, createdAt, updatedAt)
+INSERT IGNORE INTO worker_category (worker_id, category_id, createdAt, updatedAt)
 SELECT
   w.id,
-  FLOOR(1 + RAND() * 5),
+  FLOOR(1 + RAND() * 11),
   NOW(),
   NOW()
 FROM workers w
