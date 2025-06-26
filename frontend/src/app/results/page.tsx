@@ -2,9 +2,10 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import FilteredCards from "../components/FilteredCards";
+import { IWorker } from "../utils/interface";
 
 const Page = () => {
-  const [resultSearch, setResultSearch] = useState([]);
+  const [resultSearch, setResultSearch] = useState([] as IWorker[]);
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
 
@@ -23,16 +24,17 @@ const Page = () => {
     getSearch();
   }, []);
 
-  console.log(resultSearch);
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 mb-10">
-        {resultSearch.length > 1 ? (
+        {resultSearch.length > 0 ? (
           resultSearch.map((worker) => (
             <FilteredCards key={worker.id} worker={worker} />
           ))
         ) : (
-          <h1>No hay resultados</h1>
+          <div className="flex justify-center items-center">
+            <h2>No hay resultados</h2>
+          </div>
         )}
       </div>
     </>

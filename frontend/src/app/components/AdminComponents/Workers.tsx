@@ -14,14 +14,14 @@ const Workers = ({ worker }: Props) => {
         key={worker.id}
         className="rounded-lg shadow-sm border hover:shadow-md transition-all cursor-pointer"
       >
-        <div className="aspect-square overflow-hidden rounded-2xl">
+        <div className="aspect-square overflow-hidden ">
           <Image
-          src={worker.image || "/placeholder.svg"}
-          alt={worker.name}
-          className="w-full h-full object-cover "
-          width={45}
-          height={45}
-        />
+            src={worker.image || "/placeholder.svg"}
+            alt={worker.name}
+            className="w-full h-full object-cover rounded-b-3xl rounded-t-2xl p-2 "
+            width={600}
+            height={400}
+          />
         </div>
         <div className="p-4 space-y-3">
           <div className="space-y-1">

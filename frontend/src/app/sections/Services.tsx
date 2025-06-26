@@ -177,5 +177,3 @@ const Services = () => {
 };
 
 export default Services;
-
-// Componente SkeletonCard definido arriba
