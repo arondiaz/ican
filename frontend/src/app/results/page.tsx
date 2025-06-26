@@ -9,9 +9,12 @@ const Page = () => {
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
 
+  const URL = process.env.NEXT_PUBLIC_API;
+
   useEffect(() => {
     const getSearch = async () => {
-      const url = `http://localhost:4444/categories/${query}`;
+      const url = `${URL}/categories/${query}`;
+      console.log(url);
       try {
         const res = await fetch(url);
         const data = await res.json();

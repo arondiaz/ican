@@ -16,6 +16,8 @@ const Services = () => {
   const loaderRef = useRef<HTMLDivElement>(null);
   const itemsPerPage = 8;
 
+   const URL = process.env.NEXT_PUBLIC_API;
+
   const categoryOptions = [
     { value: "1", name: "Electricista" },
     { value: "2", name: "Plomero" },
@@ -32,7 +34,7 @@ const Services = () => {
   useEffect(() => {
     const getAllWorkers = async () => {
       try {
-        const allWorkers = await fetch("http://localhost:4444/workers");
+        const allWorkers = await fetch(`${URL}/workers`);
         const data = await allWorkers.json();
         setWorkers(data);
       } catch (error) {

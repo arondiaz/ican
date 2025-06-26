@@ -8,7 +8,9 @@ interface IParams {
 }
 
 export default async function EditEmpleadoPage({ params }: IParams) {
-  const res = await fetch(`http://localhost:4444/workers/${params.id}`, {
+  const URL = process.env.NEXT_PUBLIC_API;
+  const url = `${URL}/workers/${params.id}`;
+  const res = await fetch(url, {
     cache: "no-store",
   });
 

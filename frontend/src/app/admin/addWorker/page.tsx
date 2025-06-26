@@ -86,10 +86,10 @@ const Page = () => {
       image: imageUrl,
     };
 
-    const url = "http://localhost:4444/workers";
+    const URL = process.env.NEXT_PUBLIC_API;
 
     try {
-      const res = await fetch(url, {
+      const res = await fetch(`${URL}/workers`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

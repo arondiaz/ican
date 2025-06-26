@@ -10,7 +10,9 @@ type PageProps = {
 };
 
 async function getWorkerPerId(params: string) {
-  const url = `http://localhost:4444/workers/${params}}`;
+  const URL = process.env.NEXT_PUBLIC_API;
+
+  const url = `${URL}/workers/${params}}`;
   const response = await fetch(url, { cache: "no-store" });
   const data = await response.json();
 

@@ -4,10 +4,11 @@ import { Users, MapPin } from "lucide-react";
 
 const Page = () => {
   const [metrics, setMetrics] = useState([]);
+   const URL = process.env.NEXT_PUBLIC_API;
 
   useEffect(() => {
     const getMetrics = async () => {
-      const res = await fetch("http://localhost:4444/metrics");
+      const res = await fetch(`${URL}/metrics`);
 
       const data = await res.json();
 

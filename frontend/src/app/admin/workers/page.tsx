@@ -8,11 +8,12 @@ const Page = () => {
   const [selectedCategory, setSelectedCategory] = useState("Todas");
   const [selectedCity, setSelectedCity] = useState("Todas las ciudades");
   const [workers, setWorkers] = useState<IWorker[]>([]);
+   const URL = process.env.NEXT_PUBLIC_API;
 
   useEffect(() => {
     const getAllWorkers = async () => {
       try {
-        const url = "http://localhost:4444/workers";
+        const url = `${URL}/workers`;
 
         const allWorkers = await fetch(url);
         const data = await allWorkers.json();

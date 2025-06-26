@@ -15,6 +15,7 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
   });
 
   const [image, setImage] = useState<File | null>(null);
+  const URL2 = process.env.NEXT_PUBLIC_API;
 
   const router = useRouter();
 
@@ -85,7 +86,7 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
       image: image ? imageUrl : data.image,
     };
 
-    await fetch(`http://localhost:4444/workers/${worker.id}`, {
+    await fetch(`${URL2}/workers/${worker.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -95,7 +96,7 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
   };
 
   const handleDelete = async (id: number) => {
-    await fetch(`http://localhost:4444/workers/${id}`, {
+    await fetch(`${URL2}/workers/${id}`, {
       method: "DELETE",
     });
     router.push("/admin/workers");

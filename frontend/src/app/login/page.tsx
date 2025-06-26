@@ -8,12 +8,13 @@ import S from "../assets/s.png";
 const Page = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const URL = process.env.NEXT_PUBLIC_API;
 
   const router = useRouter();
 
   const handleLogin = async () => {
     try {
-      const res = await fetch("http://localhost:4444/login", {
+      const res = await fetch(`${URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -21,6 +22,7 @@ const Page = () => {
       });
       const data = await res.json();
 
+      console.log(data);
       if (data.success) {
         router.push("/admin");
       } else {
@@ -48,9 +50,7 @@ const Page = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-md font-medium mb-1">
-                Mail
-              </label>
+              <label className="block text-md font-medium mb-1">Mail</label>
               <input
                 type="text"
                 placeholder=""
