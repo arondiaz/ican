@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import FilteredCards from "../components/FilteredCards";
 import { IWorker } from "../utils/interface";
+import { Suspense } from "react";
 
 const Page = () => {
   const [resultSearch, setResultSearch] = useState([] as IWorker[]);
@@ -28,7 +29,7 @@ const Page = () => {
   }, [query]);
 
   return (
-    <>
+    <Suspense fallback={<div>Cargando resultados...</div>}>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 mb-10">
         {resultSearch.length > 0 ? (
           resultSearch.map((worker) => (
@@ -40,7 +41,7 @@ const Page = () => {
           </div>
         )}
       </div>
-    </>
+    </Suspense>
   );
 };
 
