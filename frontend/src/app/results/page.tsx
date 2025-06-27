@@ -15,18 +15,18 @@ const Page = () => {
   useEffect(() => {
     const getSearch = async () => {
       const url = `${URL}/categories/${query}`;
-      console.log(url);
       try {
         const res = await fetch(url);
         const data = await res.json();
         setResultSearch(data);
-      } catch (error) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (error: any) {
         console.log(error);
       }
     };
 
-    getSearch();
-  }, []);
+    if (URL && query) getSearch();
+  }, [URL, query]);
 
   return (
     <>
