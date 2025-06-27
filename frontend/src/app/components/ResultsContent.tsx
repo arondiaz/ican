@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import FilteredCards from "../components/FilteredCards";
 import { IWorker } from "../utils/interface";
 
@@ -42,4 +42,12 @@ const ResultsContent = () => {
   );
 };
 
-export default ResultsContent;
+
+
+export default function ResultsClient() {
+  return (
+    <Suspense fallback={<div>Cargando resultados...</div>}>
+      <ResultsContent />
+    </Suspense>
+  );
+}
