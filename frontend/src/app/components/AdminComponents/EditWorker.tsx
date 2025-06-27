@@ -10,12 +10,11 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
     phone: worker.phone || "",
     description: worker.description || "",
     city: worker.city || "",
-    categoryIds: worker.categories?.map(category => category.id) || [],
+    categoryIds: worker.categories?.map((category) => category.id) || [],
     image: worker.image,
   });
 
   const [image, setImage] = useState<File | null>(null);
-  const URL2 = process.env.NEXT_PUBLIC_API;
 
   const router = useRouter();
 
@@ -37,7 +36,11 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
     { value: "Casilda", name: "Casilda" },
   ];
 
-  const handleChange = (e : React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     const { name, value } = e.target;
 
     if (name === "categoryIds") {
@@ -74,6 +77,7 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const URL2 = process.env.NEXT_PUBLIC_API;
 
     let imageUrl = "";
 
@@ -90,12 +94,14 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
-      cache: "no-store"
+      cache: "no-store",
     });
     router.push("/admin/workers");
   };
 
   const handleDelete = async (id: number) => {
+    const URL2 = process.env.NEXT_PUBLIC_API;
+
     await fetch(`${URL2}/workers/${id}`, {
       method: "DELETE",
     });
