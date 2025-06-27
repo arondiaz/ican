@@ -5,9 +5,9 @@ import { Users, MapPin } from "lucide-react";
 
 const Page = () => {
   const [metrics, setMetrics] = useState([]);
-   const URL = process.env.NEXT_PUBLIC_API;
 
   useEffect(() => {
+    const URL = process.env.NEXT_PUBLIC_API;
     const getMetrics = async () => {
       const res = await fetch(`${URL}/metrics`);
 

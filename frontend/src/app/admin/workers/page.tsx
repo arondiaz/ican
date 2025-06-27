@@ -1,16 +1,16 @@
 "use client";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { IWorker } from "@/app/utils/interface"
+import { IWorker } from "@/app/utils/interface";
 import Workers from "@/app/components/AdminComponents/Workers";
 
 const Page = () => {
   const [selectedCategory, setSelectedCategory] = useState("Todas");
   const [selectedCity, setSelectedCity] = useState("Todas las ciudades");
   const [workers, setWorkers] = useState<IWorker[]>([]);
-   const URL = process.env.NEXT_PUBLIC_API;
 
   useEffect(() => {
+    const URL = process.env.NEXT_PUBLIC_API;
     const getAllWorkers = async () => {
       try {
         const url = `${URL}/workers`;

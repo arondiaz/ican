@@ -11,7 +11,7 @@ type PageProps = {
 };
 
 async function getWorkersPerCategory(params: string) {
-     const URL = process.env.NEXT_PUBLIC_API;
+  const URL = process.env.NEXT_PUBLIC_API;
 
   const url = `${URL}/categories/${params}`;
   const response = await fetch(url);

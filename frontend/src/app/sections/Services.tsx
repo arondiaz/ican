@@ -17,8 +17,6 @@ const Services = () => {
   const loaderRef = useRef<HTMLDivElement>(null);
   const itemsPerPage = 8;
 
-   const URL = process.env.NEXT_PUBLIC_API;
-
   const categoryOptions = [
     { value: "1", name: "Electricista" },
     { value: "2", name: "Plomero" },
@@ -33,6 +31,8 @@ const Services = () => {
   ];
 
   useEffect(() => {
+    const URL = process.env.NEXT_PUBLIC_API;
+
     const getAllWorkers = async () => {
       try {
         const allWorkers = await fetch(`${URL}/workers`);

@@ -10,9 +10,8 @@ const Page = () => {
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
 
-  const URL = process.env.NEXT_PUBLIC_API;
-
   useEffect(() => {
+    const URL = process.env.NEXT_PUBLIC_API;
     const getSearch = async () => {
       const url = `${URL}/categories/${query}`;
       try {
@@ -26,7 +25,7 @@ const Page = () => {
     };
 
     if (URL && query) getSearch();
-  }, [URL, query]);
+  }, [query]);
 
   return (
     <>
