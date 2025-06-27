@@ -21,8 +21,6 @@ const Page = () => {
         body: JSON.stringify({ email, password }),
       });
       const data = await res.json();
-
-      console.log(data);
       if (data.success) {
         router.push("/admin");
       } else {

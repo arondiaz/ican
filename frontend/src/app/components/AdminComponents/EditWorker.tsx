@@ -37,7 +37,7 @@ export default function EditWorker({ worker }: { worker: IWorker }) {
     { value: "Casilda", name: "Casilda" },
   ];
 
-  const handleChange = (e : any) => {
+  const handleChange = (e : React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
 
     if (name === "categoryIds") {

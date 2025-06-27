@@ -11,7 +11,9 @@ type PageProps = {
 };
 
 async function getWorkersPerCategory(params: string) {
-  const url = `http://localhost:4444/categories/${params}`;
+     const URL = process.env.NEXT_PUBLIC_API;
+
+  const url = `${URL}/categories/${params}`;
   const response = await fetch(url);
   const data = await response.json();
 
