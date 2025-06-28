@@ -1,26 +1,27 @@
 "use client";
-
 import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
-import FilteredCards from "../components/FilteredCards";
+import { useEffect, useState } from "react";
+import FilteredCards from "./FilteredCards";
 import { IWorker } from "../utils/interface";
 
-const ResultsContent = () => {
+const SearchResults = () => {
   const [resultSearch, setResultSearch] = useState<IWorker[]>([]);
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
 
   useEffect(() => {
     const URL = process.env.NEXT_PUBLIC_API;
-    if (!URL || !query) return;
 
     const getSearch = async () => {
+      if (!query) return;
+      const url = `${URL}/categories/${query}`;
+
       try {
-        const res = await fetch(`${URL}/categories/${query}`);
+        const res = await fetch(url);
         const data = await res.json();
         setResultSearch(data);
       } catch (error) {
-        console.error(error);
+        console.log(error);
       }
     };
 
@@ -28,7 +29,7 @@ const ResultsContent = () => {
   }, [query]);
 
   return (
-    <div className="grid grid-cols-1 ...">
+    <div className="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 mb-10">
       {resultSearch.length > 0 ? (
         resultSearch.map((worker) => (
           <FilteredCards key={worker.id} worker={worker} />
@@ -42,12 +43,4 @@ const ResultsContent = () => {
   );
 };
 
-
-
-export default function ResultsClient() {
-  return (
-    <Suspense fallback={<div>Cargando resultados...</div>}>
-      <ResultsContent />
-    </Suspense>
-  );
-}
+export default SearchResults;
