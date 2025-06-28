@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Image from "next/image";
 import { IWorker } from "../utils/interface";
@@ -14,7 +14,7 @@ const FilteredCards = ({ worker }: Props) => {
     <Link href={`worker/${worker.id}`}>
       <div
         key={worker.id}
-        className="bg-white/80 shadow-sm border hover:shadow-md transition-all cursor-pointer rounded-2xl text-gray-700"
+        className="bg-white/80 h-full shadow-sm border hover:shadow-md transition-all cursor-pointer rounded-2xl text-gray-700"
       >
         <div className="aspect-square overflow-hidden ">
           <Image
@@ -25,7 +25,7 @@ const FilteredCards = ({ worker }: Props) => {
             height={400}
           />
         </div>
-        <div className="p-4 space-y-3  rounded-b-3xl max-w-full">
+        <div className="p-4 space-y-3 -space-x-2  rounded-b-3xl max-w-full max-h-fit">
           <div className="space-y-1">
             <div className="flex items-center justify-between">
               <h4 className="text-base md:text-xl  font-semibold line-clamp-1">
@@ -49,11 +49,11 @@ const FilteredCards = ({ worker }: Props) => {
             </span>
           </div>
 
-          <div className="flex flex-col  md:flex-row md:gap-2 max-w-max">
+          <div className="flex flex-row items-center md:gap-2 max-w-max space-x-1">
             {worker.categories?.map((cat) => (
               <p
                 key={cat.id}
-                className="text-sm md:text-md lg:text-base bg-gray-600 px-2 rounded-lg text-white"
+                className="text-sm md:text-md lg:text-base bg-gray-600 px-2 rounded-lg text-white "
               >
                 {" "}
                 {cat.name}

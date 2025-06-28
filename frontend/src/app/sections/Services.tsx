@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React, { useEffect, useRef, useState, useCallback } from "react";
-import Header from "../components/Header";
 import FilteredCards from "../components/FilteredCards";
 import { IWorker } from "../utils/interface";
 import { Skeleton } from "../components/Skeleton";
-import { MapPin, Tag } from "lucide-react";
+import { MapPin, Search, Tag } from "lucide-react";
+import Header from "../components/Header";
 
 const Services = () => {
   const [selectedCategory, setSelectedCategory] = useState("Todas");
@@ -91,29 +91,41 @@ const Services = () => {
   }, [loadMore, visibleWorkers.length, filtered.length]);
 
   return (
-    <section className="w-full py-12 md:mt-16 bg-slate-400 text-black">
-      <div className="container px-4 md:px-6">
-        <div className="space-y-8">
-          <div className="text-center">
-            <Header
-              title="Encontrá el servicio que estás buscando..."
-              className="text-3xl font-bold tracking-tighter md:text-4xl"
-            />
+    <section className="w-full md:container py-12 md:mt-16 bg-slate-400 text-black">
+      <div className="space-y-8">
+        <div className="py-10 px-4">
+          <div className="text-center mb-16 relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-12 px-6">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 via-purple-600/5 to-pink-600/5"></div>
+            <div className="relative">
+              <div className="flex justify-center mb-4">
+                <div className="p-3 bg-original rounded-full shadow-lg">
+                  <Search className="w-6 h-6 text-white" />
+                </div>
+              </div>
+              <Header
+                title="Encontrá el servicio que estás buscando..."
+                className="text-3xl md:text-4xl lg:text-5xl font-bold bg-original bg-clip-text text-transparent leading-tight"
+              />
+              <h3 className="text-base md:text-xl mt-4 font-light text-black/80">
+                Conectamos profesionales calificados con personas que necesitan
+                servicios de calidad
+              </h3>
+            </div>
           </div>
 
-          <div className="p-6 ">
+          <div className="pb-8 ">
             <div className="container grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-3">
                 <label className="flex items-center gap-2">
-                  <MapPin className="h-5 w-5 text-primary" />
-                  <h3 className="text-lg font-semibold text-foreground">
+                  <MapPin className="h-6 w-6 text-primary" />
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground">
                     Ubicación
                   </h3>
                 </label>
                 <select
                   value={selectedCity}
                   onChange={(e) => setSelectedCity(e.target.value)}
-                  className="w-full rounded-xl border border-gray-300 bg-white text-sm px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full rounded-xl border border-gray-300 bg-white text-md lg:text-lg px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   {["Todas las ciudades", "Rosario", "Casilda", "Santa Fe"].map(
                     (city) => (
@@ -125,15 +137,15 @@ const Services = () => {
 
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <Tag className="h-5 w-5 text-primary" />
-                  <h3 className="text-lg font-semibold text-foreground">
+                  <Tag className="h-6 w-6 text-primary" />
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground">
                     Categorías
                   </h3>
                 </div>
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full rounded-xl border border-gray-300 bg-white text-sm px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full rounded-xl border border-gray-300 bg-white text-md lg:text-lg px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   {categoryOptions.map((cat) => (
                     <option key={cat.value}>{cat.name}</option>
@@ -143,11 +155,11 @@ const Services = () => {
             </div>
           </div>
 
-          <div className="text-sm text-muted-foreground">
+          <div className="text-sm text-muted-foreground my-4">
             Mostrando {visibleWorkers.length} de {filtered.length} resultados
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+          <div className=" grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6">
             {visibleWorkers.map((worker) => (
               <FilteredCards key={worker.id} worker={worker} />
             ))}
