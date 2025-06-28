@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "framer-motion": "^11.2.14",
     "fuse.js": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",

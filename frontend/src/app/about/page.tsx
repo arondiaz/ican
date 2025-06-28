@@ -9,7 +9,7 @@ const page = () => {
     <>
       <Navbar />
 
-      <section className="w-full ">
+      <section className="w-full mt-16 ">
         <div className="pt-16 ">
           <div className="container px-4 md:px-6">
             <div className="max-w-4xl mx-auto text-center space-y-8">
@@ -25,7 +25,7 @@ const page = () => {
                     que estás buscando
                   </span>
                 </h2>
-                <h4 className="text-2xl pt-6">
+                <h4 className="text-lg md:text-2xl pt-6">
                   Éste proyecto nace como un desafío, con la idea de llevarlo a
                   producción, no busco un rédito económico pero sí que me abra
                   puertas. Si bien implementé algunas cosas que no conocía, lo
