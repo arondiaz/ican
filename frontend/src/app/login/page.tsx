@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import S from "../assets/s.png";
+import Link from "next/link";
 
 const Page = () => {
   const [email, setEmail] = useState("");
@@ -48,6 +49,9 @@ const Page = () => {
             </div>
 
             <div className="mb-4">
+              <div className="flex justify-center font-semibold">
+                <h3>Panel Admin</h3>
+              </div>
               <label className="block text-md font-medium mb-1">Mail</label>
               <input
                 type="text"
@@ -71,6 +75,17 @@ const Page = () => {
               />
             </div>
 
+            <div className="flex justify-center items-center my-2">
+              <p className="text-md">
+                No tienes cuenta?
+                <Link href="/about">
+                  {" "}
+                  <span className="text-soft-variant hover:text-dark-variant font-semibold">
+                    Unirme
+                  </span>{" "}
+                </Link>
+              </p>
+            </div>
             <button
               onClick={handleLogin}
               className="w-full bg-original  text-white font-semibold py-2 px-4 rounded-lg "

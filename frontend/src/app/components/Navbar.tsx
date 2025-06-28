@@ -2,9 +2,11 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import S from "../assets/s.png";
+import { LogIn } from "lucide-react";
 
 const navItems = [
   { href: "/about", name: "Sobre Servicio Libre" },
+  { href: "/login", name: <LogIn /> },
 ];
 
 const Navbar = () => {
@@ -55,7 +57,7 @@ const Navbar = () => {
 
         <div className="hidden md:inline-flex  items-center gap-4">
           {navItems.map((nav) => (
-            <Link href={nav.href} key={nav.name}>
+            <Link href={nav.href} key={nav.href}>
               {nav.name}
             </Link>
           ))}
