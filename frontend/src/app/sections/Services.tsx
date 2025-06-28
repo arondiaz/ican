@@ -18,6 +18,7 @@ const Services = () => {
   const itemsPerPage = 8;
 
   const categoryOptions = [
+    { value: "0", name: "Todas las categorías" },
     { value: "1", name: "Electricista" },
     { value: "2", name: "Plomero" },
     { value: "3", name: "Carpintero" },
@@ -47,7 +48,7 @@ const Services = () => {
 
   const filtered = workers.filter((worker) => {
     const matchCategory =
-      selectedCategory === "Todas" ||
+      selectedCategory === "Todas las categorías" ||
       worker.categories?.some((cat) => cat.name === selectedCategory);
     const matchCity =
       selectedCity === "Todas las ciudades" || worker.city === selectedCity;
