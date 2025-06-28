@@ -18,7 +18,7 @@ export const login = async (req, res) => {
 
   // se guarda el token en las cookies
   res
-    .cookie("sessiontokenadms", token, {
+    .cookie("sessiontoken", token, {
       httpOnly: true, // No accesible desde JS en el navegador
       secure: true, // obligatorio con sameSite none
       sameSite: "none",
