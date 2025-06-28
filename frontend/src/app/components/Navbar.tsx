@@ -79,7 +79,7 @@ const Navbar = () => {
             <Link
               href={href}
               key={name}
-              className="text-stone-200 border-t border-slate-700 last:border-b py-8 group/nav-item relative isolate"
+              className="text-stone-200 border-t border-slate-700 last:border-b py-8 group/nav-item relative "
               onClick={() => setIsOpen(!isOpen)}
             >
               <div className="container !max-w-full flex items-center justify-between">
@@ -125,7 +125,7 @@ const Navbar = () => {
           </Link>
           <div className="flex items-center gap-4">
             <div
-              className="relative size-11 border border-black/80 rounded-full inline-flex items-center justify-center cursor-pointer"
+              className="lg:hidden relative size-11 border border-black/80 rounded-full inline-flex items-center justify-center cursor-pointer"
               onClick={() => setIsOpen(!isOpen)}
             >
               <svg
@@ -153,6 +153,14 @@ const Navbar = () => {
                   ref={bottomLineScope}
                 />
               </svg>
+            </div>
+
+            <div className="hidden lg:flex justify-end gap-8">
+              {navItems.map((item) => (
+                <Link key={item.href} href={item.href}>
+                  {item.name}
+                </Link>
+              ))}
             </div>
           </div>
         </div>

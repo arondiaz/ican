@@ -88,7 +88,7 @@ const Hero = () => {
                     placeholder="Ej: electricista en rosario, plomero en casilda..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full h-12 pl-4 md:pl-10 pr-10 text-lg bg-transparent placeholder:text-xs md:placeholder:text-sm lg:placeholder:text-lg placeholder:text-gray-500 text-gray-900 border-0 focus:outline-none"
+                    className="w-full h-4 md:h-10 pl-4 md:pl-10 pr-10 text-md bg-transparent placeholder:text-xs md:placeholder:text-sm lg:placeholder:text-lg placeholder:text-gray-500 text-gray-900 border-0 focus:outline-none"
                   />
                 </div>
               </div>
