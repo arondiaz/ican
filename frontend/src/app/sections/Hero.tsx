@@ -58,7 +58,7 @@ const Hero = () => {
   // }, [searchQuery, getWorkers]);
 
   return (
-    <section className="relative w-full md:pt-12 md:-mb-16 min-h-[500px] sm:min-h-[700px] md:min-h-[550px] lg:min-h-[600px] flex justify-center  items-center sm:pb-28 overflow-hidden">
+    <section className="relative w-full md:pt-12 md:-mb-16 min-h-[500px] sm:min-h-[620px] md:min-h-[670px] lg:min-h-[800px] flex justify-center  items-center sm:pb-28 overflow-hidden">
       {heroImages.map((image, index) => (
         <div
           key={index}

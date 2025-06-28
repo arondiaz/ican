@@ -69,9 +69,9 @@ const Navbar = () => {
     navScope,
   ]);
   return (
-    <header className=" max-w-full bg-white ">
+    <header className="max-w-full bg-white ">
       <div
-        className=" fixed top-0 left-0 w-full h-0 overflow-hidden bg-slate-500 z-40 "
+        className="fixed top-0 left-0 w-full h-0 overflow-hidden bg-slate-500 z-40 "
         ref={navScope}
       >
         <nav className="mt-20 flex flex-col h-full ">
@@ -157,7 +157,15 @@ const Navbar = () => {
 
             <div className="hidden lg:flex justify-end gap-8">
               {navItems.map((item) => (
-                <Link key={item.href} href={item.href}>
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`px-4 py-2 rounded-md transition-all ${
+                    item.name === "Login"
+                      ? "bg-original text-white hover:bg-dark"
+                      : "text-black hover:text-dark "
+                  }`}
+                >
                   {item.name}
                 </Link>
               ))}
