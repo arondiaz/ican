@@ -85,10 +85,10 @@ const Hero = () => {
                 <div className="relative flex-1">
                   <input
                     type="text"
-                    placeholder="Ej: electricista en rosario, plomero en casilda..."
+                    placeholder="electricista en rosario, plomero en..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full h-4 md:h-10 pl-4 md:pl-10 pr-10 text-md bg-transparent placeholder:text-xs md:placeholder:text-sm lg:placeholder:text-lg placeholder:text-gray-500 text-gray-900 border-0 focus:outline-none"
+                    className="w-full h-10 pl-4 md:pl-10 pr-8 text-md bg-transparent placeholder:text-sm lg:placeholder:text-lg placeholder:text-gray-500 text-gray-900 border-0 focus:outline-none"
                   />
                 </div>
               </div>

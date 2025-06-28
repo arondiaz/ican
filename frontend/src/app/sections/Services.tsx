@@ -18,7 +18,7 @@ const Services = () => {
   const itemsPerPage = 8;
 
   const categoryOptions = [
-    { value: "0", name: "Todas las categorías" },
+    { value: "Todas", name: "Todas" },
     { value: "1", name: "Electricista" },
     { value: "2", name: "Plomero" },
     { value: "3", name: "Carpintero" },
@@ -48,7 +48,7 @@ const Services = () => {
 
   const filtered = workers.filter((worker) => {
     const matchCategory =
-      selectedCategory === "Todas las categorías" ||
+      selectedCategory === "Todas" ||
       worker.categories?.some((cat) => cat.name === selectedCategory);
     const matchCity =
       selectedCity === "Todas las ciudades" || worker.city === selectedCity;
@@ -149,7 +149,9 @@ const Services = () => {
                   className="w-full rounded-xl border border-gray-300 bg-white text-md lg:text-lg px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   {categoryOptions.map((cat) => (
-                    <option key={cat.value}>{cat.name}</option>
+                    <option key={cat.value} value={cat.name}>
+                      {cat.name}
+                    </option>
                   ))}
                 </select>
               </div>
