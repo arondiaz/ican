@@ -20,8 +20,8 @@ export const login = async (req, res) => {
   res
     .cookie("sessiontokenadms", token, {
       httpOnly: true, // No accesible desde JS en el navegador
-      secure: process.env.NODE_ENV === "production", // solo HTTPS en producción
-      sameSite: "lax", // protección CSRF básica
+      secure: true, // obligatorio con sameSite none
+      sameSite: "none",
       maxAge: 1000 * 60 * 60 * 24, // 1 día
     })
     .json({ success: true });
