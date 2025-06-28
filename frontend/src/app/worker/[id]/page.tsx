@@ -24,7 +24,7 @@ const page = async ({ params }: PageProps) => {
   return (
     <>
       <Navbar />
-      <section className="container w-full md:pt-10 md:-mb-16 h-screen ">
+      <section className="container w-full md:pt-10 md:-mb-16 h-screen mt-32 ">
         <WorkerProfile worker={worker} />
       </section>
     </>

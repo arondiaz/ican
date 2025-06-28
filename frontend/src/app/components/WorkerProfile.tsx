@@ -82,7 +82,10 @@ const WorkerProfile = ({ worker }: { worker: IWorker }) => {
                   {" "}
                   Contactar ahora:{" "}
                 </span>{" "}
-                <span className="text-xl font-bold"> {worker.phone}</span>
+                <span className="text-xl font-bold tracking-wider">
+                  {" "}
+                  {worker.phone}
+                </span>
               </div>
             </button>
           </div>

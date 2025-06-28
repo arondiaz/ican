@@ -29,7 +29,7 @@ const SearchResults = () => {
   }, [query]);
 
   return (
-    <div className="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 mb-10">
+    <div className="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 mt-28 md:mt-44">
       {resultSearch.length > 0 ? (
         resultSearch.map((worker) => (
           <FilteredCards key={worker.id} worker={worker} />
