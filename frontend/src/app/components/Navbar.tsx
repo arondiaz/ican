@@ -13,61 +13,16 @@ const navItems = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [topLineScope, topLineAnimate] = useAnimate();
-  const [bottomLineScope, bottomLineAnimate] = useAnimate();
   const [navScope, navAnitame] = useAnimate();
 
   useEffect(() => {
     if (isOpen) {
-      topLineAnimate([
-        [topLineScope.current, { transform: "translateY(4px) rotate(45deg)" }],
-      ]);
-      bottomLineAnimate([
-        [
-          bottomLineScope.current,
-          { transform: "translateY(-4px) rotate(-45deg)" },
-        ],
-      ]);
-      navAnitame(
-        navScope.current,
-        {
-          height: "100%",
-        },
-        {
-          duration: 0.7,
-        }
-      );
+      navAnitame(navScope.current, { height: "100%" }, { duration: 0.7 });
     } else {
-      topLineAnimate([
-        [
-          topLineScope.current,
-          {
-            transform: "translateY(0px) rotate(0deg)",
-          },
-        ],
-      ]);
-
-      bottomLineAnimate([
-        [
-          bottomLineScope.current,
-          {
-            transform: "translateY(0px) rotate(0deg)",
-          },
-        ],
-      ]);
-      navAnitame(navScope.current, {
-        height: 0,
-      });
+      navAnitame(navScope.current, { height: 0 });
     }
-  }, [
-    isOpen,
-    topLineAnimate,
-    topLineScope,
-    bottomLineAnimate,
-    bottomLineScope,
-    navAnitame,
-    navScope,
-  ]);
+  }, [isOpen, navAnitame, navScope]);
+
   return (
     <header className="max-w-full bg-white ">
       <div
@@ -142,7 +97,7 @@ const Navbar = () => {
                   width="18"
                   height="2"
                   fill="currentColor"
-                  ref={topLineScope}
+                  animate={isOpen ? { y: 4, rotate: 45 } : { y: 1, rotate: 0 }}
                 />
                 <motion.rect
                   x="3"
@@ -150,7 +105,9 @@ const Navbar = () => {
                   width="18"
                   height="2"
                   fill="currentColor"
-                  ref={bottomLineScope}
+                  animate={
+                    isOpen ? { y: -4, rotate: -45 } : { y: 1, rotate: 0 }
+                  }
                 />
               </svg>
             </div>
