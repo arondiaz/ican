@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import { User } from "../models/User.js";
 import { Worker } from "../models/Worker.js";
 import { Category } from "../models/Categories.js";
+import { NextResponse } from "next/server";
 
 export const login = async (req, res) => {
   const isDev = process.env.NODE_ENV !== "production";
@@ -18,8 +19,10 @@ export const login = async (req, res) => {
     expiresIn: "1d",
   });
 
+  const response = NextResponse.redirect("/admin");
+
   // se guarda el token en las cookies
-  res
+  response.res
     .cookie("sessiontoken", token, {
       httpOnly: true,
       secure: !isDev ? true : false,
