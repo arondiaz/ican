@@ -3,14 +3,15 @@ import Navbar from "../components/Navbar";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import Link from "next/link";
+import Footer from "../components/Footer";
 
 const page = () => {
   return (
     <>
       <Navbar />
 
-      <section className="w-full mt-16 ">
-        <div className="pt-16 ">
+      <section className="w-full  mt-16 min-h-[800px] ">
+        <div className="pt-20 ">
           <div className="container px-4 md:px-6">
             <div className="max-w-4xl mx-auto text-center space-y-8">
               <div className="space-y-4">
@@ -26,17 +27,20 @@ const page = () => {
                   </span>
                 </h2>
                 <h4 className="text-lg md:text-2xl pt-6">
-                  Éste proyecto nace como un desafío, con la idea de llevarlo a
-                  producción, no busco un rédito económico pero sí que me abra
-                  puertas. Si bien implementé algunas cosas que no conocía, lo
-                  más dificil de todo proyecto es que tenga usuarios y eso no lo
-                  sabía hasta que empecé a buscar gente para llenar mi base de
-                  datos con datos reales.
+                  Éste proyecto nace como un desafío, con la idea de hacer un
+                  sitio que pueda ser llevado a producción. Si bien implementé
+                  cosas que no conocía para el desarrollo, lo más difícil de
+                  todo proyecto es que tenga usuarios reales. Por ésto, usaré
+                  datos ficticios.
+                  <br /> <br />
+                  Si estás interesado en formar parte de Servicio Libre puedes
+                  llenar el formulario, es gratis y lo seguirá siendo.
                   <br />
-                  Por el momento usaré datos ficticios pero me gustaría que en
-                  el futuro tenga datos de gente real, es totalmente gratis y lo
-                  seguirá siendo.
                 </h4>
+
+                <h3 className="text-lg md:text-2xl pt-6">
+                  Hecho con ❤️ React, Next.js, Express, Sequelize.
+                </h3>
               </div>
             </div>
           </div>
@@ -64,6 +68,7 @@ const page = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 };
