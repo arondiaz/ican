@@ -7,9 +7,13 @@ import cookieParser from "cookie-parser";
 import cloudinary from "cloudinary";
 
 const corsOptions = {
-  origin: ["http://localhost:3000", "https://ican-tau.vercel.app", "https://www.serviciolibre.com.ar"], // o '*' para permitir todos (menos seguro)
-  methods: "GET,POST,PUT,DELETE",
-  allowedHeaders: "Content-Type",
+  origin: [
+    "http://localhost:3000",
+    "https://ican-tau.vercel.app",
+    "https://www.serviciolibre.com.ar",
+  ], // o '*' para permitir todos
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type"],
   credentials: true,
 };
 
