@@ -24,8 +24,6 @@ export const login = async (req, res) => {
       maxAge: 1000 * 60 * 60 * 24, // 1 día
     })
     .json({ success: true });
-
-   return res.json({ success: true });
 };
 
 export const metrics = async (req, res) => {
