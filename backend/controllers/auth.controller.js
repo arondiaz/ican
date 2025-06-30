@@ -5,8 +5,6 @@ import { Worker } from "../models/Worker.js";
 import { Category } from "../models/Categories.js";
 
 export const login = async (req, res) => {
-  const isDev = process.env.NODE_ENV !== "production";
-
   const { email, password } = req.body;
   const user = await User.findOne({ where: { email } });
 
@@ -18,7 +16,6 @@ export const login = async (req, res) => {
     expiresIn: "1d",
   });
 
-  // se guarda el token en las cookies
   res
     .cookie("sessiontoken", token, {
       httpOnly: true,
@@ -28,7 +25,7 @@ export const login = async (req, res) => {
     })
     .json({ success: true });
 
-  return res.redirect("/admin");
+   return res.json({ success: true });
 };
 
 export const metrics = async (req, res) => {
