@@ -3,7 +3,6 @@ import bcrypt from "bcrypt";
 import { User } from "../models/User.js";
 import { Worker } from "../models/Worker.js";
 import { Category } from "../models/Categories.js";
-import { NextResponse } from "next/server";
 
 export const login = async (req, res) => {
   const isDev = process.env.NODE_ENV !== "production";
@@ -19,10 +18,8 @@ export const login = async (req, res) => {
     expiresIn: "1d",
   });
 
-  const response = NextResponse.redirect("/admin");
-
   // se guarda el token en las cookies
-  response.res
+  res
     .cookie("sessiontoken", token, {
       httpOnly: true,
       secure: true,
@@ -30,6 +27,8 @@ export const login = async (req, res) => {
       maxAge: 1000 * 60 * 60 * 24, // 1 día
     })
     .json({ success: true });
+
+  return res.redirect("/admin");
 };
 
 export const metrics = async (req, res) => {
