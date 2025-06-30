@@ -21,12 +21,12 @@ const Page = () => {
         credentials: "include",
         body: JSON.stringify({ email, password }),
       });
-      
+
       const data = await res.json();
       if (data.success) {
         router.push("/admin");
-      }else{
-        alert("Credenciales inválidas")
+      } else {
+        alert("Credenciales inválidas");
       }
     } catch (error) {
       console.log(error);
@@ -35,7 +35,7 @@ const Page = () => {
   return (
     <>
       <Navbar />
-      <section className="bg-dark flex justify-center items-center h-[calc(100vh-80px)] text-gray-700">
+      <section className=" flex justify-center items-center h-[calc(100vh-80px)] text-gray-700">
         <div className="flex justify-center items-center">
           <div className=" bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
             <div className="flex justify-center items-center mb-4">
