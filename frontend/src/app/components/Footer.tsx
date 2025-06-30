@@ -2,17 +2,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Button from "../components/Button";
-// import SocialLkn from "@/app/assets/social-linkedin.svg";
-// import SocialGit from "@/app/assets/social-github.png";
+import { Github, Linkedin, User } from "lucide-react";
 
 const navItems = [
   {
     href: "/",
     label: "Inicio",
-  },
-  {
-    href: "/servicios",
-    label: "Servicios",
   },
   {
     href: "/about",
@@ -39,13 +34,13 @@ const Footer = () => {
         <div className="pt-16">
           <div className="grid md:grid-cols-3 md:items-center">
             <div className="md:col-span-2">
-              <h2 className="text-4xl mt-4 font-extralight md:text-7xl lg:text-8xl">
+              <h2 className="text-4xl mt-4 font-extralight md:text-7xl lg:text-8xl tracking-wide">
                 Servicio Libre
               </h2>
               <div className="my-10 mb-2 flex flex-row gap-2">
                 <Button
                   onClick={copy}
-                  className="text-base md:text-xl "
+                  className="text-base md:text-xl border-original "
                   variant="secondary"
                   iconAfter={
                     <svg
@@ -115,20 +110,13 @@ const Footer = () => {
           <p className="py-16 text-white/30 text-sm">2025</p>
 
           <Link href={"https://www.linkedin.com/in/arondiaz/"} target="blank">
-            {/* <Image
-              src={SocialLkn}
-              alt="link"
-              width={50}
-              className="w-16 md:w-16 "
-            /> */}
+            <Linkedin />
           </Link>
           <Link href={"https://github.com/arondiaz/"} target="blank">
-            {/* <Image
-              src={SocialGit}
-              alt="git"
-              width={36}
-              className="w-11 md:w-11 "
-            /> */}
+            <Github />
+          </Link>
+          <Link href={"https://aronmyspace.vercel.app/"} target="blank">
+            <User />{" "}
           </Link>
         </div>
       </div>
