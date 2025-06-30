@@ -28,7 +28,7 @@ async function main() {
     }
 
     // Crear usuario admin si no existe
-    const adminEmail = "admin@admin.com";
+    const adminEmail = "admin";
     const adminPass = "root";
     const existing = await User.findOne({ where: { email: adminEmail } });
 
