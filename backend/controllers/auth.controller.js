@@ -5,6 +5,8 @@ import { Worker } from "../models/Worker.js";
 import { Category } from "../models/Categories.js";
 
 export const login = async (req, res) => {
+  const isDev = process.env.NODE_ENV !== "production";
+
   const { email, password } = req.body;
   const user = await User.findOne({ where: { email } });
 
@@ -20,8 +22,8 @@ export const login = async (req, res) => {
   res
     .cookie("sessiontoken", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", 
-      sameSite: "none",
+      secure: !isDev ? true : false,
+      sameSite: !isDev ? "none" : "lax",
       maxAge: 1000 * 60 * 60 * 24, // 1 día
     })
     .json({ success: true });
