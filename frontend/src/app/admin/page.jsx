@@ -7,9 +7,11 @@ const Page = () => {
   const [metrics, setMetrics] = useState([]);
 
   useEffect(() => {
-    const URL = process.env.NEXT_PUBLIC_API;
+    // const URL = process.env.NEXT_PUBLIC_API;
     const getMetrics = async () => {
-      const res = await fetch(`${URL}/metrics`);
+      const res = await fetch("/api/metrics",{
+         credentials: "include",
+      });
 
       const data = await res.json();
 

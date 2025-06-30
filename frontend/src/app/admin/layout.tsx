@@ -5,8 +5,7 @@ import jwt from "jsonwebtoken";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const cookieStore = cookies();
-  const token = cookieStore.get("sessiontokenadms")?.value; //value**
-
+  const token = cookieStore.get("sessiontoken")?.value; 
   const SECRET = process.env.JWT_SECRET;
 
   if (!SECRET) throw new Error("JWT_SECRET no definido");

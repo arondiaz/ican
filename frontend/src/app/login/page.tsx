@@ -9,23 +9,24 @@ import Link from "next/link";
 const Page = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const URL = process.env.NEXT_PUBLIC_API;
 
   const router = useRouter();
 
   const handleLogin = async () => {
+    // const URL = process.env.NEXT_PUBLIC_API;
     try {
-      const res = await fetch(`${URL}/login`, {
+      const res = await fetch(`api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify({ email, password }),
       });
+      
       const data = await res.json();
       if (data.success) {
         router.push("/admin");
-      } else {
-        alert("Credenciales inválidas");
+      }else{
+        alert("Credenciales inválidas")
       }
     } catch (error) {
       console.log(error);

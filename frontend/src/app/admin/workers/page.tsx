@@ -10,10 +10,10 @@ const Page = () => {
   const [workers, setWorkers] = useState<IWorker[]>([]);
 
   useEffect(() => {
-    const URL = process.env.NEXT_PUBLIC_API;
+    // const URL = process.env.NEXT_PUBLIC_API;
     const getAllWorkers = async () => {
       try {
-        const url = `${URL}/workers`;
+        const url = `/api/workers`;
 
         const allWorkers = await fetch(url);
         const data = await allWorkers.json();
