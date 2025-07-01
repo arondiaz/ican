@@ -41,22 +41,6 @@ const Hero = () => {
     }
   };
 
-  // Búsqueda en tiempo real mientras el usuario escribe
-  // useEffect(() => {
-  //   if (searchQuery.length >= 2) {
-  //     const timeoutId = setTimeout(() => {
-  //       const matchedItems = performSearch(searchQuery, getWorkers);
-  //       setResults(matchedItems);
-  //       setShowResults(true);
-  //     }, 300);
-
-  //     return () => clearTimeout(timeoutId);
-  //   } else {
-  //     setShowResults(false);
-  //     setResults([]);
-  //   }
-  // }, [searchQuery, getWorkers]);
-
   return (
     <section className="relative w-full md:pt-12 md:-mb-16 min-h-[500px] sm:min-h-[620px] md:min-h-[670px] lg:min-h-[800px] flex justify-center  items-center sm:pb-28 overflow-hidden">
       {heroImages.map((image, index) => (
