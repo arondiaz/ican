@@ -1,23 +1,32 @@
-# SERVICIO LIBRE
+# 🚀 SERVICIO LIBRE
 
-Servicio Libre es un mercado de servicios, donde electricistas, gasistas, plomeros, instalador de aires acondicionados, jardineros, etc. Podrán publicarse en la página, es Login está pensado sólo para un usuario Admin, donde tiene la capacidad de crear, ver, actualizar y eliminar usuarios y algunas métricas.
+**Servicio Libre** es un mercado digital donde profesionales como electricistas, gasistas, plomeros, instaladores de aires acondicionados, jardineros y más pueden publicarse en la plataforma. El sistema de login está diseñado exclusivamente para un usuario *Admin*, quien tiene la capacidad de crear, ver, actualizar y eliminar usuarios, así como visualizar métricas. 
+El usuario puede filtrar por ciudad y categoría, tambien puede hacer uso de la barra de busqueda que está pensada para buscar por palabras aunque estén mal escritas como
+"elec", "gas en ros", "plom"  o simplemente "gasista en casilda". Además haciendo click en el perfil del prestador del servicio ingresas a su perfil donde podes ver más datos y contactarlo.
 
-El proyecto se llama Servicio Libre, realicé el proceso completo desde la idea hasta la compra del dominio y ser hosteado.
+## Proyecto
 
-Por si quieren visitarlo:
+- **Nombre:** Servicio Libre
+- **Proceso:** Desde la idea inicial hasta la compra del dominio y el despliegue en producción.
+- **Visítalo aquí:** [serviciolibre.com.ar](https://www.serviciolibre.com.ar/)
 
-## https://www.serviciolibre.com.ar/
+## Tecnologías Utilizadas
 
-El login está pensando para un usuario admin.
+| Frontend              | Backend                       |
+|-----------------------|-------------------------------|
+| Next.js               | Node.js                       |
+| TypeScript            | Express                       |
+| Tailwind CSS          | Sequelize                     |
+| Framer Motion         | MySQL                         |
+|                       |                               |
 
-Frontend : Next.js, TypeScript, Tailwind, Framer Motion
-Backend : Node.js, Express, Sequelize, MYSQL, Cloudinary
 
-## Configuración
 
--- LOS VALUES SON DE EJEMPLO --
+##  Configuración del Proyecto
 
-En la carpeta FRONTEND debe haber un archivo llamado ".env.local"
+### Frontend
+
+Crea un archivo llamado `.env.local` en la carpeta `FRONTEND` con los siguientes valores de ejemplo:
 
 JWT_SECRET=palabra-aleatoria
 
@@ -25,27 +34,29 @@ NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
 NEXT_PUBLIC_CLOUDINARY_PRESET=
 
 Producción / local
-NEXT_PUBLIC_API=https://backend.up.railway.app // NEXT_PUBLIC_API=http://localhost:4444
+NEXT_PUBLIC_API=https://backend.up.railway.app   NEXT_PUBLIC_API=http://localhost:4444
 
 
 
-En la carpeta BACKEND debe haber un archivo ".env"
 
--- localhost mysql DB
+### Backend
+
+Crea un archivo llamado `.env` en la carpeta `BACKEND` con los siguientes valores de ejemplo:
+
+Base de datos MySQL local
 DB_HOST=localhost
 DB_USER=
 DB_PASS=
 DB_NAME=
 DB_DIALECT=mysql
 
--- jwt secret
-JWT_SECRET=palabra-aleatoria (la misma que en el frontend)
+JWT Secret (debe coincidir con el frontend)
+JWT_SECRET=palabra-aleatoria
 
--- cloudinary
+Cloudinary
 CLOUDINARY_CLOUD_NAME=
 CLOUDINARY_API_KEY=
 CLOUDINARY_API_SECRET=
 
--- railway db connect
-
+Conexión Railway DB
 DB_URL=mysql://admin:xxxxxxx@caboose.proxy.rlwy.net:17568/railway
